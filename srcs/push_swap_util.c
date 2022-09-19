@@ -1,47 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap_util.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsano </var/mail/hsano>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 18:58:36 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/19 10:17:41 by hsano            ###   ########.fr       */
+/*   Created: 2022/09/19 09:54:34 by hsano             #+#    #+#             */
+/*   Updated: 2022/09/19 10:17:56 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdbool.h>
-#include "push_swap_util.h"
+#include <stdlib.h>
 #include "quick_sort.h"
 
-int	push_swap(size_t len, int *list_i)
+int	is_duplicate(size_t len, int *list)
 {
+	int		*cp_list;
 	size_t	i;
+	int		result;
 
-	if (is_duplicate(len, list_i))
-		return (false);
-
-	i = 0;
-	printf("len=%zu\n", len);
-	while (i < len)
-	{
-		printf("list[%zu]=%d\n", i, list_i[i]);
-		i++;
-	}
-	qsort_asce(list_i, list_i[len / 2], 0, len - 1);
+	result = false;
+	cp_list = (int *)malloc(sizeof(int) * len);
 	i = 0;
 	while (i < len)
 	{
-		printf("list[%zu]=%d\n", i, list_i[i]);
+		cp_list[i] = list[i];
 		i++;
 	}
-	qsort_desc(list_i, list_i[len / 2], 0, len - 1);
+	qsort_asce(cp_list, cp_list[len / 2], 0, len - 1);
 	i = 0;
-	while (i < len)
+	while (i < len - 1)
 	{
-		printf("list[%zu]=%d\n", i, list_i[i]);
+		if (cp_list[i] == cp_list[i + 1])
+		{
+			result = true;
+			break;
+		}
 		i++;
 	}
-	return (true);
+	free(cp_list);
+	return (result);
 }

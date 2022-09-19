@@ -6,7 +6,7 @@
 /*   By: hsano </var/mail/hsano>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:50:54 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/19 02:01:39 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/19 10:10:05 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,17 @@ static size_t	convert_argv_to_list(int argc, char **argv, int **list)
 int	main(int argc, char **argv)
 {
 	int		*list;
+	int		rval;
 	size_t	len;
 
 	list = NULL;
 	len = convert_argv_to_list(argc, argv, &list);
 	if (len && list)
-		push_swap(len, list);
+	{
+		rval = push_swap(len, list);
+		if (rval == false)
+			ft_printf("ERROR\n");
+	}
 	else
 		ft_printf("ERROR\n");
 	free(list);
