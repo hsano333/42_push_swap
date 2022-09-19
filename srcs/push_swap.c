@@ -6,7 +6,7 @@
 /*   By: hsano </var/mail/hsano>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:58:36 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/19 10:17:41 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/19 15:01:19 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,40 @@
 #include <stdbool.h>
 #include "push_swap_util.h"
 #include "quick_sort.h"
+#include "deque.h"
+#include "deque_util.h"
 
-int	push_swap(size_t len, int *list_i)
+int	push_swap(size_t len, int *array)
 {
 	size_t	i;
+	t_deque	*deque_node;
 
-	if (is_duplicate(len, list_i))
+	deque_node = convert_deque(len, array);
+	if (!deque_node)
+		return (false);
+	if (is_duplicate(len, array))
 		return (false);
 
 	i = 0;
 	printf("len=%zu\n", len);
 	while (i < len)
 	{
-		printf("list[%zu]=%d\n", i, list_i[i]);
+		//add_back(deque_node, &(array[i]));
+		printf("array[%zu]=%d\n", i, array[i]);
 		i++;
 	}
-	qsort_asce(list_i, list_i[len / 2], 0, len - 1);
+	qsort_asce(array, array[len / 2], 0, len - 1);
 	i = 0;
 	while (i < len)
 	{
-		printf("list[%zu]=%d\n", i, list_i[i]);
+		printf("array[%zu]=%d\n", i, array[i]);
 		i++;
 	}
-	qsort_desc(list_i, list_i[len / 2], 0, len - 1);
+	qsort_desc(array, array[len / 2], 0, len - 1);
 	i = 0;
 	while (i < len)
 	{
-		printf("list[%zu]=%d\n", i, list_i[i]);
+		printf("array[%zu]=%d\n", i, array[i]);
 		i++;
 	}
 	return (true);
