@@ -6,7 +6,7 @@
 /*   By: hsano </var/mail/hsano>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 09:54:34 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/19 17:04:21 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/19 17:17:14 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ t_deque	*convert_deque(size_t len, int	*array, t_deque *node, int *cp_array)
 		while (array[len] != cp_array[i])
 			i++;
 		compre = create_t_compre(array[len], i);
-		if (!add_back(node, (void *)compre))
+		if (!push_back(node, (void *)compre))
 		{
 			clear_deque(node);
 			return (NULL);

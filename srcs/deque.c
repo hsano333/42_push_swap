@@ -6,7 +6,7 @@
 /*   By: hsano </var/mail/hsano>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:07:59 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/19 16:55:38 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/19 17:17:22 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	is_empty(t_deque *node)
 	return (false);
 }
 
-int	add_back(t_deque *src_node, void *content)
+int	push_back(t_deque *src_node, void *content)
 {
 	t_deque	*node;
 	t_deque	*nil_node;
@@ -63,7 +63,7 @@ int	add_back(t_deque *src_node, void *content)
 	return (true);
 }
 
-int	add_front(t_deque *src_node, void *content)
+int	push_front(t_deque *src_node, void *content)
 {
 	t_deque	*node;
 	t_deque	*nil_node;
