@@ -6,13 +6,13 @@
 /*   By: hsano </var/mail/hsano>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:58:36 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/19 15:01:19 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/19 16:22:05 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdbool.h>
-#include "push_swap_util.h"
+#include "push_swap_init.h"
 #include "quick_sort.h"
 #include "deque.h"
 #include "deque_util.h"
@@ -22,7 +22,7 @@ int	push_swap(size_t len, int *array)
 	size_t	i;
 	t_deque	*deque_node;
 
-	deque_node = convert_deque(len, array);
+	deque_node = push_swap_init(len, array);
 	if (!deque_node)
 		return (false);
 	if (is_duplicate(len, array))
