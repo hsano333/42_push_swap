@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delete_deque.c                                     :+:      :+:    :+:   */
+/*   clear_deque.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsano </var/mail/hsano>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:47:10 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/19 16:18:32 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/19 16:51:57 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	clear_deque(t_deque *node)
 	t_deque	*tmp_node;
 	t_deque	*next_node;
 
+	if (node == NULL)
+		return ;
 	nil_node = search_nil(node);
 	next_node = nil_node->next;
 	while (next_node != nil_node)
@@ -51,4 +53,3 @@ void	clear_deque(t_deque *node)
 	}
 	free(nil_node);
 }
-

@@ -6,7 +6,7 @@
 /*   By: hsano </var/mail/hsano>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:58:36 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/19 16:22:05 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/19 17:04:48 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	push_swap(size_t len, int *array)
 
 	deque_node = push_swap_init(len, array);
 	if (!deque_node)
-		return (false);
-	if (is_duplicate(len, array))
 		return (false);
 
 	i = 0;

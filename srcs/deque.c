@@ -6,7 +6,7 @@
 /*   By: hsano </var/mail/hsano>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:07:59 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/19 16:28:38 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/19 16:55:38 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	add_back(t_deque *src_node, void *content)
 	t_deque	*nil_node;
 	t_deque	*tmp_node;
 
+	if (content == NULL)
+		return (false);
 	nil_node = search_nil(src_node);
 	node = (t_deque *)malloc(sizeof(t_deque));
 	if (!node)
@@ -67,6 +69,8 @@ int	add_front(t_deque *src_node, void *content)
 	t_deque	*nil_node;
 	t_deque	*tmp_node;
 
+	if (content == NULL)
+		return (false);
 	nil_node = search_nil(src_node);
 	node = (t_deque *)malloc(sizeof(t_deque));
 	if (!node)

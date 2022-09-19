@@ -6,7 +6,7 @@
 /*   By: hsano </var/mail/hsano>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 09:54:34 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/19 16:24:55 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/19 17:04:21 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,8 @@ t_compre	*create_t_compre(int origin, size_t compre)
 t_deque	*convert_deque(size_t len, int	*array, t_deque *node, int *cp_array)
 {
 	t_compre	*compre;
-	int			error;
 	size_t		i;
 
-	error = false;
 	qsort_asce(cp_array, cp_array[len / 2], 0, len - 1);
 	while (len--)
 	{
@@ -82,16 +80,13 @@ t_deque	*convert_deque(size_t len, int	*array, t_deque *node, int *cp_array)
 		while (array[len] != cp_array[i])
 			i++;
 		compre = create_t_compre(array[len], i);
-		if (!compre)
-			error = true;
-		add_back(node, (void *)compre);
+		if (!add_back(node, (void *)compre))
+		{
+			clear_deque(node);
+			return (NULL);
+		}
 	}
-	if (error)
-	{
-		clear_deque(node);
-		return (false);
-	}
-	put_all(node);
+	//put_all(node);
 	return (node);
 }
 
@@ -104,12 +99,13 @@ t_deque	*push_swap_init(size_t len, int	*array)
 		return (NULL);
 	node = init_deque();
 	cp_array = copy_array(len, array);
-	if (!cp_array || !node)
+	if (!cp_array || !node || is_duplicate(len, cp_array))
 	{
 		free(cp_array);
-		free(node);
+		clear_deque(node);
 		return (NULL);
 	}
 	node = convert_deque(len, array, node, cp_array);
+	free(cp_array);
 	return (node);
 }
