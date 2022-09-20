@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   deque_util.h                                       :+:      :+:    :+:   */
+/*   swap_deque.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 14:50:31 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/20 11:31:11 by hsano            ###   ########.fr       */
+/*   Created: 2022/09/20 01:00:28 by hsano             #+#    #+#             */
+/*   Updated: 2022/09/20 11:30:56 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEQUE_UTIL_H
-# define DEQUE_UTIL_H
-void	put_all(t_deque *node);
-#endif
+#include "deque.h"
+
+void	swap_deque(t_deque *src_node)
+{
+	t_deque	*nil_node;
+	t_deque	*first_node;
+
+	if (!src_node)
+		return ;
+	nil_node = search_nil(src_node);
+}
+
+

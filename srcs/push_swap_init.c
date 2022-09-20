@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsano </var/mail/hsano>                    +#+  +:+       +#+        */
+/*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 09:54:34 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/19 17:17:14 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/20 17:14:30 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include "ab_table.h"
 #include "push_swap_init.h"
 #include "deque_util.h"
 #include "quick_sort.h"
@@ -80,7 +81,7 @@ t_deque	*convert_deque(size_t len, int	*array, t_deque *node, int *cp_array)
 		while (array[len] != cp_array[i])
 			i++;
 		compre = create_t_compre(array[len], i);
-		if (!push_back(node, (void *)compre))
+		if (!push_front(node, (void *)compre))
 		{
 			clear_deque(node);
 			return (NULL);
@@ -90,22 +91,25 @@ t_deque	*convert_deque(size_t len, int	*array, t_deque *node, int *cp_array)
 	return (node);
 }
 
-t_deque	*push_swap_init(size_t len, int	*array)
+t_abtable	*push_swap_init(size_t len, int	*array)
 {
-	t_deque		*node;
+	t_deque		*table_a;
+	t_deque		*table_b;
 	int			*cp_array;
 
 	if (!array || len == 0)
 		return (NULL);
-	node = init_deque();
+	table_a = init_deque();
+	table_b = init_deque();
 	cp_array = copy_array(len, array);
-	if (!cp_array || !node || is_duplicate(len, cp_array))
+	if (!cp_array || !table_a || !table_b || is_duplicate(len, cp_array))
 	{
 		free(cp_array);
-		clear_deque(node);
+		clear_deque(table_a);
+		clear_deque(table_b);
 		return (NULL);
 	}
-	node = convert_deque(len, array, node, cp_array);
+	table_a = convert_deque(len, array, table_a, cp_array);
 	free(cp_array);
-	return (node);
+	return (create_ab_table(table_a, table_b));
 }

@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   deque_util.h                                       :+:      :+:    :+:   */
+/*   rotete_ab_table.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 14:50:31 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/20 11:31:11 by hsano            ###   ########.fr       */
+/*   Created: 2022/09/20 02:33:14 by hsano             #+#    #+#             */
+/*   Updated: 2022/09/20 11:30:52 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEQUE_UTIL_H
-# define DEQUE_UTIL_H
-void	put_all(t_deque *node);
-#endif
+#include "ab_table.h"
+#include "deque.h"
+
+void	ra(t_abtable *table)
+{
+	shift_up(table->a);
+}
+
+void	rb(t_abtable *table)
+{
+	shift_up(table->b);
+}
+
+void	rr(t_abtable *table)
+{
+	ra(table);
+	rb(table);
+}
+
+

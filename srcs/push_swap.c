@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsano </var/mail/hsano>                    +#+  +:+       +#+        */
+/*   By: hsano <hsano@student.42tokyo.jp>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:58:36 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/20 01:22:16 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/20 19:03:09 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,35 @@
 #include <stdbool.h>
 #include "push_swap_init.h"
 #include "quick_sort.h"
+#include "ab_table.h"
 #include "deque.h"
 #include "deque_util.h"
 
 int	push_swap(size_t len, int *array)
 {
 	//size_t	i;
-	t_deque	*deque_node;
+	t_abtable *ab_table;
 
-	deque_node = push_swap_init(len, array);
-	if (!deque_node)
+	ab_table = push_swap_init(len, array);
+	if (!ab_table)
 		return (false);
+	put_table(ab_table);
+	pb(ab_table);
+	put_table(ab_table);
+	pb(ab_table);
+	put_table(ab_table);
+	pb(ab_table);
+
+	printf("\ntest ra \n");
+	rrr(ab_table);
+	put_table(ab_table);
+	rrr(ab_table);
+	put_table(ab_table);
+	rrr(ab_table);
+	put_table(ab_table);
+	rrr(ab_table);
+	put_table(ab_table);
+	/*
 	printf("test No.1\n");
 	printf("deque count:%zu\n", count_node(deque_node));
 	put_all(deque_node);
@@ -53,6 +71,7 @@ int	push_swap(size_t len, int *array)
 		printf("test No.4 pop front :origin=%d, compre=%zu\n", test->origin, test->compre);
 	put_all(deque_node);
 	printf("test No.5 end\n\n");
+	*/
 	
 
 	/*

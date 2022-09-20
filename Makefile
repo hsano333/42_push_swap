@@ -11,7 +11,7 @@ LIBFT		:= $(LIBFTDIR)/$(LIBFTNAME)
 OBJDIR		:= ./obj
 
 SRCDIR	:= ./srcs/
-SRC	:= push_swap.c quick_sort_asce.c quick_sort_desc.c push_swap_init.c deque.c clear_deque.c deque_util.c pop_deque.c shift_deque.c
+SRC	:= push_swap.c quick_sort_asce.c quick_sort_desc.c push_swap_init.c deque.c clear_deque.c deque_util.c pop_deque.c shift_deque.c ab_table.c swap_ab_table.c rotete_ab_table.c reverse_ab_table.c
 ENTRY	:= main.c
 ENTRYBONUS	:= main_bonus.c
 DELENTRY	:= $(OBJDIR)/main_bonus.o
