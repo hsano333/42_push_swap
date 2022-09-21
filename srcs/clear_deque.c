@@ -6,11 +6,12 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:47:10 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/20 11:30:43 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/21 11:38:39 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "deque.h"
+#include "stdio.h"
 
 int	delete(t_deque *node, void *content)
 {
@@ -44,10 +45,12 @@ void	clear_deque(t_deque *node)
 		return ;
 	nil_node = search_nil(node);
 	next_node = nil_node->next;
+	printf("free No.0 next_node\n");
 	while (next_node != nil_node)
 	{
 		tmp_node = next_node;
 		next_node = next_node->next;
+		printf("free No.1 next_node tmp_node->content=%p\n", tmp_node->content);
 		free(tmp_node->content);
 		free(tmp_node);
 	}

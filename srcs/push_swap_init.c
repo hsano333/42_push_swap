@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 09:54:34 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/20 17:14:30 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/21 11:43:06 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,13 @@ t_compre	*create_t_compre(int origin, size_t compre)
 {
 	t_compre *val;
 
-	val = (t_compre *)malloc(sizeof(t_compre *) * 1);
+	val = (t_compre *)malloc(sizeof(t_compre) * 1);
+	printf("create t_compre :%p\n", val);
 	if (!val)
 		return (NULL);
 	val->origin = origin;
 	val->compre = compre;
+	val->id = 0;
 	return (val);
 }
 

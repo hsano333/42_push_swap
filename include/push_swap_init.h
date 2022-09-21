@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:03:05 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/20 11:42:21 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/21 03:00:25 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_compre
 {
 	int		origin;
 	size_t	compre;
+	int		id;
 }	t_compre;
 
 int			is_duplicate(size_t len, int *list);

@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:58:36 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/20 19:03:09 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/21 11:27:49 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ int	push_swap(size_t len, int *array)
 		i++;
 	}
 	*/
+	clear_ab_table(ab_table);
 	return (true);
 }

@@ -33,7 +33,8 @@ LFLAGS	:= $(addprefix -L,$(LIBDIRS))
 LIBS	:= $(LIBFT)
 
 CC	:= cc
-CFLAGS	:= -Wall -Wextra -Werror
+#CFLAGS	:= -Wall -Wextra -Werror  -fsanitize=address -fsanitize=address -fsanitize=integer -fsanitize=undefined
+CFLAGS	:= -Wall -Wextra -Werror -fsanitize=address
 LDFLAGS := $(IFLAGS) $(LFLAGS) -lft 
 
 all:
