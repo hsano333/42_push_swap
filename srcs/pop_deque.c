@@ -6,13 +6,13 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:21:15 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/20 11:30:51 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/22 02:21:51 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "deque.h"
 
-void*	pop_front(t_deque *src_node)
+t_compre	*pop_front(t_deque *src_node)
 {
 	t_deque	*nil_node;
 	t_deque	*front_node;
@@ -31,7 +31,7 @@ void*	pop_front(t_deque *src_node)
 	return (tmp_content);
 }
 
-void*	pop_back(t_deque *src_node)
+t_compre	*pop_back(t_deque *src_node)
 {
 	t_deque	*nil_node;
 	t_deque	*back_node;

@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 09:54:34 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/21 11:43:06 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/22 15:00:09 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ t_compre	*create_t_compre(int origin, size_t compre)
 	t_compre *val;
 
 	val = (t_compre *)malloc(sizeof(t_compre) * 1);
-	printf("create t_compre :%p\n", val);
 	if (!val)
 		return (NULL);
 	val->origin = origin;
@@ -76,7 +75,7 @@ t_deque	*convert_deque(size_t len, int	*array, t_deque *node, int *cp_array)
 	size_t		i;
 
 	qsort_asce(cp_array, cp_array[len / 2], 0, len - 1);
-	while (len--)
+	while (--len > 0)
 	{
 
 		i = 0;

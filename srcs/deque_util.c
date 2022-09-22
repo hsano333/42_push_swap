@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:42:04 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/20 11:30:46 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/22 04:01:24 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,14 @@ void	put_all(t_deque *node)
 	t_deque		*tmp_node;
 	t_compre	*val;
 
-	ft_printf("put all test_No.1\n");
 	nil_node = search_nil(node);
-	ft_printf("put all test_No.2 search nil=%p\n",nil_node);
 	tmp_node = (t_deque *)nil_node->next;
 	while (tmp_node->content != NULL)
 	{
 		val = tmp_node->content;
 		tmp_node = (t_deque *)tmp_node->next;
-		ft_printf("contents: origin=%d, compre=%d\n", val->origin, val->compre);
+		ft_printf("contents: origin=%d, compre=%d, id=%d, \n", val->origin, val->compre, val->id);
 	}
-	ft_printf("put all test_No.3\n");
 }
 
 size_t	count_node(t_deque *node)
@@ -50,4 +47,20 @@ size_t	count_node(t_deque *node)
 		count++;
 	}
 	return (count);
+}
+
+int	equal_id(t_deque *a_node, t_deque *b_node)
+{
+	if (a_node->content == NULL || b_node->content)
+		return (false);
+	else if (a_node->content->id == b_node->content->id)
+		return (true);
+	return (false);
+}
+
+void	update_id(t_deque *node, int id)
+{
+	if (node->content == NULL)
+		return ;
+	node->content->id = id;
 }
