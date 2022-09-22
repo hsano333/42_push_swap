@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 00:16:45 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/23 02:38:46 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/23 04:11:25 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ static size_t	*get_val(t_abtable *table, size_t *val, char target)
 		val[2] = ((t_deque *)nil_b->next)->content->compre;
 		val[3] = ((t_deque *)(((t_deque *)nil_b->next)->next))->content->compre;
 	}
-	if (target == BOTH_TABLE)
-		val[4] = ((t_deque *)nil_a->prev)->content->compre;
+	//if (target == BOTH_TABLE)
+		//val[4] = ((t_deque *)nil_a->prev)->content->compre;
 	return (val);
 }
 
-int	is_ss(t_abtable *table)
+int	is_ss(t_abtable *table, t_pivot pivot)
 {
 	t_deque	*nil_a;
 	size_t	val[5];
@@ -54,13 +54,15 @@ int	is_ss(t_abtable *table)
 	if (get_val(table, val, BOTH_TABLE) == NULL)
 		return (false);
 	//printf("target = , val[0]=%zu, [1]=%zu,[2]=%zu, [3]=%zu\n ", val[0], val[1], val[2], val[3]);
-	if (val[0] > val[1] && val[2] < val[3])
+	if (val[0] > val[1] && val[2] < val[3]
+		&& ((val[0] > pivot.large && val[1] > pivot.large) || (val[0] <= pivot.large && val[1] <= pivot.large)) \
+		&& ((val[2] > pivot.large && val[3] > pivot.large) || (val[2] <= pivot.large && val[3] <= pivot.large)))
 		return (true);
-	else if (val[4] > val[0] && val[2] < val[3] && (equal_id(nil_a->next,nil_a->prev)))
-	{
-		rra(table);
-		return (true);
-	}
+	//else if (val[4] > val[0] && val[2] < val[3] && (equal_id(nil_a->next,nil_a->prev)))
+	//{
+		//rra(table);
+		//return (true);
+	//}
 	return (false);
 }
 
@@ -75,12 +77,14 @@ int	is_sa(t_abtable *table, char target, t_pivot pivot)
 	else if (target == BOTH_TABLE && get_val(table, val, A_TABLE) == NULL)
 		return (false);
 	//printf("target = %c, val[0]=%zu, [1]=%zu,[2]=%zu, [3]=%zu\n ",target,  val[0], val[1], val[2], val[3]);
-	if ((target == A_TABLE || target == BOTH_TABLE) && (val[0] > val[1]))
+	if ((target == A_TABLE || target == BOTH_TABLE) && (val[0] > val[1] \
+		&& ((val[0] > pivot.large && val[1] > pivot.large) || (val[0] <= pivot.large && val[1] <= pivot.large))))
 	{
 		//printf("is sa true No.1\n");
 		return (true);
 	}
-	else if ((target == B_TABLE) && (val[0] > val[1]) && (val[3] >= pivot.small))
+	else if ((target == B_TABLE) && (val[3] >= pivot.small) && (val[0] > val[1]) \
+		&& ((val[0] > pivot.large && val[1] > pivot.large) || (val[0] <= pivot.large && val[1] <= pivot.large)))
 	{
 		//printf("is sa true No.2\n");
 		return (true);
@@ -99,12 +103,14 @@ int	is_sb(t_abtable *table, char target, t_pivot pivot)
 	else if (target == BOTH_TABLE && get_val(table, val, B_TABLE) == NULL)
 		return (false);
 	//printf("target = %c, val[0]=%zu, [1]=%zu,[2]=%zu, [3]=%zu\n ",target,  val[0], val[1], val[2], val[3]);
-	if ((target == A_TABLE) && (val[2] < val[3]) && (val[1] <= pivot.large))
+	if ((target == A_TABLE) && (val[2] < val[3]) && (val[1] <= pivot.large) \
+		&& ((val[2] > pivot.large && val[3] > pivot.large) || (val[2] <= pivot.large && val[3] <= pivot.large)))
 	{
 		//printf("is sb true No.1\n");
 		return (true);
 	}
-	else if ((target == B_TABLE || (target == BOTH_TABLE)) && (val[2] < val[3]))
+	else if ((target == B_TABLE || (target == BOTH_TABLE)) && (val[2] < val[3])
+		&& ((val[2] > pivot.large && val[3] > pivot.large) || (val[2] <= pivot.large && val[3] <= pivot.large)))
 	{
 		//printf("is sb true No.2\n");
 		return (true);

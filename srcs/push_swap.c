@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:58:36 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/23 03:12:27 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/23 04:45:18 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	push_swap(size_t len, int *array)
 	int test = 0;
 	while (can_sort(ab_table, BOTH_TABLE))
 	{
-		//put_table(ab_table);
-		//if (test > 10)
-			//break;
+		put_table(ab_table);
+		if (test > 10)
+			break;
 		test++;
 		//if (is_less_than_four_table_a(table))
 		//{
@@ -56,10 +56,11 @@ int	push_swap(size_t len, int *array)
 			//reverse_a(ab_table);
 			//printf("B_table is sorted\n");
 		}
+		reverse_a(ab_table);
 		//reverse_b(ab_table);
 	}
-	//printf("\n\n test=%d,end_sort\n", test);
-	//put_table(ab_table);
+	printf("\n\n test=%d,end_sort\n", test);
+	put_table(ab_table);
 	clear_ab_table(ab_table);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:57:03 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/23 03:09:04 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/23 04:22:35 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	execute_shift(t_abtable *table, char target, t_pivot pivot)
 {
 	//printf("target =%d, pivot=%zu\n", target, pivot.middle);
-	if (is_ss(table))
+	if (is_ss(table, pivot))
 		ss(table);
 	else if (is_sb(table, target, pivot))
 		sb(table);
@@ -41,16 +41,22 @@ static void	execute_rotate_a(t_abtable *table, int force)
 		rr(table);
 		table->ra_flag = false;
 		table->rb_flag = false;
+		table->reverse_count_a++;
+		table->reverse_count_b++;
 	}
 	else if (force == true)
 	{
 		if (table->ra_flag)
+		{
+			table->reverse_count_a++;
 			ra(table);
+		}
 		table->ra_flag = false;
 	}
 	else if (table->ra_flag)
 	{
 		ra(table);
+		table->reverse_count_a++;
 		table->ra_flag = false;
 	}
 	else 
@@ -64,16 +70,22 @@ static void	execute_rotate_b(t_abtable *table, int force)
 		rr(table);
 		table->ra_flag = false;
 		table->rb_flag = false;
+		table->reverse_count_a++;
+		table->reverse_count_b++;
 	}
 	else if (force == true)
 	{
 		if (table->rb_flag)
+		{
 			rb(table);
+			table->reverse_count_b++;
+		}
 		table->rb_flag = false;
 	}
 	else if (table->rb_flag)
 	{
 		rb(table);
+		table->reverse_count_b++;
 		table->rb_flag = false;
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:30:35 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/23 03:10:13 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/23 04:40:21 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "quick_sort.h"
 #include "ab_table_util.h"
 #include "can_command.h"
+#include "push_swap_util.h"
 #include <limits.h>
 #include <stdio.h>
 
@@ -54,7 +55,6 @@ static void	execute_table_a(t_abtable *table, t_deque *node, t_pivot pivot)
 	{
 		//printf("execute_rotate a table No.1\n");
 		execute_rotate(table, A_TABLE, false);
-		table->reverse_count_a++;
 	}
 	else if (node->content->compre <= pivot.large)
 	{
@@ -71,7 +71,7 @@ static void	execute_table_a(t_abtable *table, t_deque *node, t_pivot pivot)
 		{
 			//printf("execute_rotate a table No.3\n");
 			execute_rotate(table, B_TABLE, false);
-			table->reverse_count_b++;
+			//table->reverse_count_b++;
 		}
 	}
 }
@@ -90,7 +90,7 @@ void	execute_divide_cmd(t_abtable *table, t_deque *node, char target, t_pivot pi
 		if (node->content->compre < pivot.small)
 		{
 			execute_rotate(table, B_TABLE, false);
-			table->reverse_count_b++;
+			//table->reverse_count_b++;
 		}
 		else if (node->content->compre >= pivot.small)
 		{
@@ -104,7 +104,7 @@ void	execute_divide_cmd(t_abtable *table, t_deque *node, char target, t_pivot pi
 			pa(table);
 			if (tmp_compre < pivot.large)
 			{
-				table->reverse_count_a++;
+				//table->reverse_count_a++;
 				execute_rotate(table, A_TABLE, false);
 			}
 		}
@@ -141,9 +141,12 @@ void	divide_ab_table(t_abtable *table, char target)
 		}
 		else 
 			node = node->next;
+		if (can_sort(table, target) == false)
+			return ;
+
 			//printf("loop No.2\n");
 	}
-	execute_rotate(table, BOTH_TABLE, true);
+	//execute_rotate(table, BOTH_TABLE, true);
 	execute_shift(table, BOTH_TABLE, pivot);
 	execute_reverse(table);
 	rotation_for_reverse(table);
