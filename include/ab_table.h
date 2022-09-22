@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 02:27:59 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/22 14:46:00 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/23 02:05:16 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ typedef struct s_abtable
 	t_deque	*b;
 	int		a_no;
 	int		b_no;
+	int		reverse_count_a;
+	int		reverse_count_b;
 	int		put_flag;
+	int		ra_flag;
+	int		rb_flag;
 }	t_abtable;
 
 void		sa(t_abtable *table);

@@ -6,14 +6,13 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:47:51 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/22 03:41:18 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/23 02:14:53 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ab_table.h"
 #include "deque.h"
-#include "deque_util.h"
 #include "ft_printf.h"
 
 t_abtable	*create_ab_table(t_deque *a, t_deque *b)
@@ -30,6 +29,10 @@ t_abtable	*create_ab_table(t_deque *a, t_deque *b)
 	table->b = b;
 	table->a_no = 1;
 	table->b_no = 0;
+	table->reverse_count_a = 0;
+	table->reverse_count_b = 0;
+	table->ra_flag = false;
+	table->rb_flag = false;
 	return (table);
 }
 

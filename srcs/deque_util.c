@@ -6,12 +6,11 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:42:04 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/22 04:01:24 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/22 23:37:23 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "deque.h"
-#include "push_swap_init.h"
 #include "ft_printf.h"
 
 void	put_all(t_deque *node)
@@ -30,7 +29,7 @@ void	put_all(t_deque *node)
 	}
 }
 
-size_t	count_node(t_deque *node)
+size_t	count_node(t_deque *node, int id)
 {
 	size_t	count;
 	t_deque	*nil_node;
@@ -43,15 +42,16 @@ size_t	count_node(t_deque *node)
 	count = 0;
 	while (tmp_node != nil_node)
 	{
+		if (id == 0 || (id == tmp_node->content->id))
+			count++;
 		tmp_node = tmp_node->next;
-		count++;
 	}
 	return (count);
 }
 
 int	equal_id(t_deque *a_node, t_deque *b_node)
 {
-	if (a_node->content == NULL || b_node->content)
+	if (a_node->content == NULL || b_node->content == NULL)
 		return (false);
 	else if (a_node->content->id == b_node->content->id)
 		return (true);

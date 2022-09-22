@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:36:01 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/20 18:43:43 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/22 22:56:34 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	swap(t_deque *src_node)
 	t_deque	*first_node;
 	t_deque	*second_node;
 
-	if (!src_node || count_node(src_node) < 2)
+	if (!src_node || count_node(src_node, 0) < 2)
 		return ;
 	nil_node = search_nil(src_node);
 	first_node = nil_node->next;
@@ -41,7 +41,7 @@ void	shift_up(t_deque *src_node)
 		return ;
 	nil_node = search_nil(src_node);
 	first_node = nil_node->next;
-	len = count_node(src_node);
+	len = count_node(src_node, 0);
 	if (len < 2)
 		return ;
 	else if (len == 2)
@@ -64,7 +64,7 @@ void	shift_down(t_deque *src_node)
 		return ;
 	nil_node = search_nil(src_node);
 	last_node = nil_node->prev;
-	len = count_node(src_node);
+	len = count_node(src_node, 0);
 	if (len < 2)
 		return ;
 	else if (len == 2)

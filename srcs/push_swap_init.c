@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 09:54:34 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/22 15:00:09 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/23 00:12:12 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "ab_table.h"
 #include "push_swap_init.h"
-#include "deque_util.h"
+#include "deque.h"
 #include "quick_sort.h"
 
 int	*copy_array(size_t len, int *array)
@@ -73,20 +73,23 @@ t_deque	*convert_deque(size_t len, int	*array, t_deque *node, int *cp_array)
 {
 	t_compre	*compre;
 	size_t		i;
+	size_t		j;
 
 	qsort_asce(cp_array, cp_array[len / 2], 0, len - 1);
-	while (--len > 0)
+	j = 0;
+	while (j < len)
 	{
 
 		i = 0;
-		while (array[len] != cp_array[i])
+		while (array[j] != cp_array[i])
 			i++;
-		compre = create_t_compre(array[len], i);
-		if (!push_front(node, (void *)compre))
+		compre = create_t_compre(array[j], i);
+		if (!push_back(node, (void *)compre))
 		{
 			clear_deque(node);
 			return (NULL);
 		}
+		j++;
 	}
 	//put_all(node);
 	return (node);
