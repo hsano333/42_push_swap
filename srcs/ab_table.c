@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:47:51 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/23 02:14:53 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 02:34:37 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ t_abtable	*create_ab_table(t_deque *a, t_deque *b)
 	table = (t_abtable *)malloc(sizeof(t_abtable));
 	table->a = a;
 	table->b = b;
-	table->a_no = 1;
-	table->b_no = 0;
+	table->no = 0;
+	//table->b_no = 1;
 	table->reverse_count_a = 0;
 	table->reverse_count_b = 0;
 	table->ra_flag = false;

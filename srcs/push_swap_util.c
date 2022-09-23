@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 21:44:12 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/23 23:59:43 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 01:51:27 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ int	can_sort(t_abtable *table, char target)
 	node = nil_node->next;
 	while (target != B_TABLE && node->next != nil_node)
 	{
-		printf("can_sort No.1  now:%zu, next:%zu\n", node->content->compre, ((t_deque *)node->next)->content->compre);
-		printf("can_sort No.2  nil:%p, now:%p, next:%p\n", nil_node, node, node->next);
+		//printf("can_sort No.1  now:%zu, next:%zu\n", node->content->compre, ((t_deque *)node->next)->content->compre);
+		//printf("can_sort No.2  nil:%p, now:%p, next:%p\n", nil_node, node, node->next);
 		if (node->content->compre + 1 != (((t_deque *)node->next)->content->compre))
 			return (true);
-		printf("can_sort No.3  nil:%p, now:%p, next:%p\n", nil_node, node, node->next);
+		//printf("can_sort No.3  nil:%p, now:%p, next:%p\n", nil_node, node, node->next);
 		node = node->next;
 	}
-	printf("can sort No.2\n");
+	//printf("can sort No.2\n");
 	nil_node = search_nil(table->b);
 	node = nil_node->next;
 	while (target == B_TABLE && node->next != nil_node)
@@ -55,7 +55,7 @@ void	reverse_a(t_abtable *table)
 	size_t		base_val;
 	size_t		next_val;
 
-	printf("reverse_a start\n");
+	//printf("reverse_a start\n");
 	nil_node_a = search_nil(table->a);
 	if (nil_node_a->next == nil_node_a)
 		return ;

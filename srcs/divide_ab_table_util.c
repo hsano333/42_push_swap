@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:57:03 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/23 22:11:01 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 01:50:43 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	execute_reverse(t_abtable *table)
 
 	cnt_a = table->reverse_count_a;
 	cnt_b = table->reverse_count_b;
-	printf("execute_reverse test No.1 cnt_a=%d, b=%d\n", cnt_a, cnt_b);
+	//printf("execute_reverse test No.1 cnt_a=%d, b=%d\n", cnt_a, cnt_b);
 	//if (table->reverse_count_a == 0 && table->reverse_count_a == 0)
 		//return (false);
 	if (cnt_a > 0 && cnt_b > 0 && is_rrr(table))

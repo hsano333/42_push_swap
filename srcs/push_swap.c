@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:58:36 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 00:16:41 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 01:55:29 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	push_swap(size_t len, int *array)
 		}
 		if (!can_sort(ab_table, A_TABLE))
 		{
-			printf("can_sort == false so execute reverse_a\n");
+			//printf("can_sort == false so execute reverse_a\n");
 			reverse_a(ab_table);
 		}
 		//else
@@ -57,7 +57,7 @@ int	push_swap(size_t len, int *array)
 		put_table(ab_table);
 		if (can_sort(ab_table, A_TABLE) == false && can_sort(ab_table, B_TABLE))
 		{
-			printf("B_table is not sorted. so execute diviede_ab_table\n");
+			//printf("B_table is not sorted. so execute diviede_ab_table\n");
 			divide_ab_table(ab_table, B_TABLE);
 		}
 		else
