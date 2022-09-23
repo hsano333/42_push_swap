@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:04:58 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/22 22:55:43 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/23 21:08:43 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		swap(t_deque *src_node);
 t_compre	*pop_front(t_deque *src_node);
 t_compre	*pop_back(t_deque *src_node);
 int			equal_id(t_deque *a_node, t_deque *b_node);
+int			id_is_more_than_one(t_deque *node);
 void		update_id(t_deque *node, int id);
 void		put_all(t_deque *node);
 size_t		count_node(t_deque *node, int id);

@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 02:27:59 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/23 02:05:16 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/23 18:36:25 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define A_TABLE 'A'
 # define B_TABLE 'B'
 # define BOTH_TABLE 'C'
+# define FINAL 'F'
 
 typedef struct s_abtable
 {

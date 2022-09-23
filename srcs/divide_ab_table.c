@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:30:35 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/23 04:40:21 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 00:24:07 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,33 @@ static t_pivot	calc_pivot(t_abtable *table, char target, int id)
 static void	execute_table_a(t_abtable *table, t_deque *node, t_pivot pivot)
 {
 	size_t	tmp_compre;
+	int		id;
 
-	if (node->content->compre > pivot.large)
+	if (node->content->compre >= pivot.large)
 	{
+		update_id(node, table->b_no);
 		//printf("execute_rotate a table No.1\n");
-		execute_rotate(table, A_TABLE, false);
+		execute_rotate(table, A_TABLE, false, false);
 	}
-	else if (node->content->compre <= pivot.large)
+	else if (node->content->compre < pivot.large)
 	{
 		tmp_compre = node->content->compre;
+		id = node->content->id;
 		update_id(node, table->b_no - 1);
-		if (node->content->compre >= pivot.small)
+		if (tmp_compre > pivot.small)
+			update_id(node, table->b_no);
+		//if (table->ra_flag || ((tmp_compre >= pivot.small) && (table->ra_flag || count_node(search_nil(table->b), id) >= 2)))
+		//if (table->ra_flag || ((table->rb_flag) && (tmp_compre > pivot.small) && count_node(search_nil(table->b), id) >= 2))
+		if (table->ra_flag || (table->rb_flag))
 		{
 			//printf("execute_rotate a table No.2\n");
-			update_id(node, table->b_no);
-			execute_rotate(table, B_TABLE, true);
+			execute_rotate(table, B_TABLE, true, false);
 		}
 		pb(table);
-		if (tmp_compre >= pivot.small)
+		if ((tmp_compre > pivot.small) && (count_node(search_nil(table->b), id) >= 2))
 		{
 			//printf("execute_rotate a table No.3\n");
-			execute_rotate(table, B_TABLE, false);
+			execute_rotate(table, B_TABLE, false, false);
 			//table->reverse_count_b++;
 		}
 	}
@@ -78,38 +84,48 @@ static void	execute_table_a(t_abtable *table, t_deque *node, t_pivot pivot)
 
 
 
-void	execute_divide_cmd(t_abtable *table, t_deque *node, char target, t_pivot pivot)
+t_deque	*execute_divide_cmd(t_abtable *table, t_deque *node, char target, t_pivot pivot)
 {
 	size_t	tmp_compre;
+	t_deque	*next_node;
+	int		id;
 
-	//printf("target=%c, compre=%zu ,pivot, max=%zu, middle=%zu,min=%zu\n", target, node->content->compre, pivot.large, pivot.middle, pivot.small);
+	next_node = node->next;
+	printf("target=%c, compre=%zu ,pivot, max=%zu, middle=%zu,min=%zu\n", target, node->content->compre, pivot.large, pivot.middle, pivot.small);
 	if (target == A_TABLE)
 		execute_table_a(table, node, pivot);
 	else if(target == B_TABLE)
 	{
-		if (node->content->compre < pivot.small)
+		if (node->content->compre <= pivot.small)
 		{
-			execute_rotate(table, B_TABLE, false);
+			update_id(node, table->a_no);
+			execute_rotate(table, B_TABLE, false, false);
 			//table->reverse_count_b++;
 		}
-		else if (node->content->compre >= pivot.small)
+		else if (node->content->compre > pivot.small)
 		{
 			tmp_compre = node->content->compre;
+			id = node->content->id;
 			update_id(node, table->a_no - 1);
-			if (node->content->compre < pivot.large)
-			{
+			if (tmp_compre <= pivot.large)
 				update_id(node, table->a_no);
-				execute_rotate(table, A_TABLE, false);
+			//if ((node->content->compre <= pivot.large) && (table->rb_flag || count_node(search_nil(table->b), id) >= 2))
+			//if (table->rb_flag || ((table->ra_flag) && (tmp_compre <= pivot.large) && count_node(search_nil(table->b), id) >= 2))
+			if (table->rb_flag || table->ra_flag)
+			{
+				execute_rotate(table, A_TABLE, true, false);
 			}
 			pa(table);
-			if (tmp_compre < pivot.large)
+			if ((tmp_compre <= pivot.large) && (count_node(search_nil(table->b), id) >= 2))
 			{
 				//table->reverse_count_a++;
-				execute_rotate(table, A_TABLE, false);
+				execute_rotate(table, A_TABLE, false, false);
 			}
 		}
 	}
-	execute_shift(table, target, pivot);
+	//node = node->next;
+	next_node = execute_shift(table, target, pivot, next_node);
+	return (next_node);
 }
 
 
@@ -131,23 +147,32 @@ void	divide_ab_table(t_abtable *table, char target)
 	//while (len > 0 && node != nil_node && is_more_than_three(node, id))
 	while (len > 0 && node != nil_node)
 	{
-		////next_node = node->next;
+		//next_node = ((t_deque *)node->next)->next;
 		//printf("loop No.0 len =%zu\n", len);
 		if (node->content->id == id && --len > 0)
-		{
+		//{
 			//printf("loop No.1\n");
-			execute_divide_cmd(table, node, target, pivot);
-			node = nil_node->next;
-		}
-		else 
-			node = node->next;
-		if (can_sort(table, target) == false)
-			return ;
+			node = execute_divide_cmd(table, node, target, pivot);
+		else
+			break ;
+			//node = nil_node->next;
+			//node = nil_node->next;
+		//}
+		//else 
+			//node = node->next;
 
-			//printf("loop No.2\n");
+		if (can_sort(table, target) == false)
+		{
+			printf("can_sort == false so escape loop and init()\n");
+			init_flag(table, target);
+			break ;
+		}
 	}
-	//execute_rotate(table, BOTH_TABLE, true);
-	execute_shift(table, BOTH_TABLE, pivot);
-	execute_reverse(table);
+	if (node == nil_node)
+		printf("node == nil_node , so escape loop\n");
+	execute_rotate(table, target, false, true);
+	execute_shift(table, BOTH_TABLE, pivot, node);
 	rotation_for_reverse(table);
+	//while (execute_reverse(table))
+		//id++;
 }

@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:42:04 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/22 23:37:23 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/23 20:52:45 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,29 @@ void	update_id(t_deque *node, int id)
 	if (node->content == NULL)
 		return ;
 	node->content->id = id;
+}
+
+int	id_is_more_than_one(t_deque *node)
+{
+	t_deque	*nil_node;
+	t_deque	*tmp_node;
+	int		cnt;
+	int		tmp_id;
+	
+	nil_node = search_nil(node);
+	tmp_node = nil_node->next;
+	if (tmp_node->content == NULL)
+		return (false);
+	tmp_id = tmp_node->content->id;
+	cnt = 1;
+	while (tmp_node != nil_node)
+	{
+		if (tmp_id != tmp_node->content->id)
+		{
+			cnt++;
+			return (true);
+		}
+		tmp_node = tmp_node->next;
+	}
+	return (false);
 }

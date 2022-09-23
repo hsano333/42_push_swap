@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 01:01:33 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/23 01:23:55 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/23 22:11:21 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	is_rrr(t_abtable *table)
 	t_deque	*nil_a;
 	size_t	val[5];
 
+	if (!id_is_more_than_one(table->a) || !id_is_more_than_one(table->b))
+		return (false);
 	nil_a = search_nil(table->a);
 	if (get_val(table, val, BOTH_TABLE) == NULL)
 		return (false);
@@ -61,6 +63,8 @@ int	is_rra(t_abtable *table)
 {
 	size_t	val[5];
 
+	//if (!id_is_more_than_one(table->a))
+		//reutrn (false);
 	if (get_val(table, val, A_TABLE) == NULL)
 		return (false);
 	//if (target == B_TABLE && get_val(table, val, BOTH_TABLE) == NULL)
@@ -80,6 +84,8 @@ int	is_rrb(t_abtable *table)
 {
 	size_t	val[5];
 
+	//jif (!id_is_more_than_one(table->b))
+		//jreutrn (false);
 	if (get_val(table, val, B_TABLE) == NULL)
 		return (false);
 	//printf("rotate = , val[0]=%zu, [1]=%zu,[2]=%zu, [3]=%zu\n ", val[0], val[1], val[2], val[3]);

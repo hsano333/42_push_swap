@@ -6,11 +6,12 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:50:31 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/22 22:55:49 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/23 21:08:46 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEQUE_UTIL_H
 # define DEQUE_UTIL_H
+//int	id_is_more_than_one(t_deque *node);
 
 #endif
