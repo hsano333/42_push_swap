@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:27:04 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 00:07:05 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 01:45:31 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ void	rotation_for_reverse(t_abtable *table)
 			table->reverse_count_a--;
 			table->reverse_count_b--;
 		}
-		else if (table->reverse_count_a > 0)
+		else if (table->reverse_count_a > 0 || is_rra(table))
 		{
 			rra(table);
 			table->reverse_count_a--;
 		}
-		else if (table->reverse_count_b > 0)
+		else if (table->reverse_count_b > 0 || is_rrb(table))
 		{
 			rrb(table);
 			table->reverse_count_b--;

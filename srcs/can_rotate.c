@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 01:01:33 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/23 22:11:21 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 01:48:36 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static size_t	*get_val(t_abtable *table, size_t *val, char target)
 	nil_b = search_nil(table->b);
 	//printf("get_val test No.1\n");
 	if ((target != B_TABLE) \
-		&& (nil_a->next == nil_a || (nil_a->prev == nil_a \
-	   	|| equal_id(nil_a->next, nil_a->prev) == false)))
+		&& (nil_a->next == nil_a || (nil_a->prev == nil_a)))
+	   	//|| equal_id(nil_a->next, nil_a->prev) == false)))
 		return (NULL);
 	//printf("get_val test No.2\n");
 	if ((target != A_TABLE) \
-		&& (nil_b->next == nil_b || (nil_b->prev == nil_b \
-	   	|| equal_id(nil_b->next, nil_b->prev) == false)))
+		&& (nil_b->next == nil_b || (nil_b->prev == nil_b)))
+	   	//|| equal_id(nil_b->next, nil_b->prev) == false)))
 		return (NULL);
 	//printf("get_val test No.3\n");
 	if ((target == A_TABLE) || (target == BOTH_TABLE))
