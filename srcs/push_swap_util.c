@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 21:44:12 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 16:56:28 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 22:18:38 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 void	kill_process(t_abtable *table)
 {
 	clear_ab_table(table);
+	ft_printf("ERROR\n");
 	exit(EXIT_FAILURE);
 }
 

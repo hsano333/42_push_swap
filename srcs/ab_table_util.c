@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:27:04 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 16:10:02 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 23:21:58 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,10 @@ void	rotation_for_reverse(t_abtable *table)
 	int	a_flag;
 	int	b_flag;
 
-
-
-	printf("rotation for reverse No.1  a=%d, b=%d\n",table->reverse_count_a,table->reverse_count_b  );
 	if (id_is_more_than_one(table->a) == false)
 		table->reverse_count_a = 0;
-	printf("rotation for reverse No.2  a=%d, b=%d\n",table->reverse_count_a,table->reverse_count_b  );
 	if (id_is_more_than_one(table->b) == false)
 		table->reverse_count_b = 0;
-	printf("rotation for reverse No.3  a=%d, b=%d\n",table->reverse_count_a,table->reverse_count_b  );
-	printf("rotation for reverse No.4 is_rra=%d, is_rrb=%d,  \n", is_rra(table), is_rra(table));
 	while (1)
 	{
 		a_flag = id_is_more_than_one(table->a) && ((table->reverse_count_a > 0 || is_rra(table)));
@@ -102,17 +96,18 @@ void	init_flag(t_abtable *table, char target)
 	}
 }
 
-char	*get_common_instruction(char *inst_a, char *inst_b, size_t len_a, size_t len_b)
+char	*get_common_instruction(char *inst_a, char *inst_b, int len_a, int len_b)
 {
 	char	*common;
-	size_t		i;
+	int		i;
 
-	i = 0;
+	i = -1;
+	common = NULL;
 	if (len_a == len_b)
 		common = inst_a;
 	else if (len_a > len_b)
 	{
-		while (i++ < len_a)
+		while (++i < len_a)
 		{
 			if (ft_strnstr(&(inst_a[i]), inst_b, len_b))
 				common = &(inst_a[i]);
@@ -120,7 +115,7 @@ char	*get_common_instruction(char *inst_a, char *inst_b, size_t len_a, size_t le
 	}
 	else
 	{
-		while (i++ < len_b)
+		while (++i < len_b)
 		{
 			if (ft_strnstr(&(inst_b[i]), inst_a, len_a))
 				common = &(inst_b[i]);

@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:42:04 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 21:53:02 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 21:55:33 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	put_all(t_deque *node)
 	}
 }
 
-#include <stdio.h>
 size_t	count_node(t_deque *node, size_t id)
 {
 	size_t	count;
@@ -41,7 +40,6 @@ size_t	count_node(t_deque *node, size_t id)
 	nil_node = search_nil(node);
 	tmp_node = nil_node->next;
 	count = 0;
-	printf("tmp_node=%p, nil_node=%p\n", tmp_node, nil_node);
 	while (tmp_node != nil_node)
 	{
 		if (id == 0 || (id == tmp_node->content->id))

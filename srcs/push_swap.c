@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:58:36 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 13:20:12 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 00:26:09 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int	push_swap(size_t len, int *array)
 	ab_table = push_swap_init(len, array);
 	if (!ab_table)
 		return (false);
-	int test = 0;
+	//int test = 0;
 	while (can_sort(ab_table, BOTH_TABLE))
 	{
-		put_table(ab_table);
-		if (test > 9)
-			break;
-		test++;
+		//put_table(ab_table);
+		//if (test > 277)
+			//break;
+		//test++;
 		//if (is_less_than_four_table_a(table))
 		//{
 //
@@ -42,14 +42,15 @@ int	push_swap(size_t len, int *array)
 		init_flag(ab_table, BOTH_TABLE);
 		if (is_two_or_three_node(ab_table))
 		{
-			printf("less_than_four_node\n");
-			printf("less_than_four_node\n");
-			printf("less_than_four_node\n");
-			printf("less_than_four_node\n");
+			//printf("less_than_four_node\n");
+			//printf("less_than_four_node\n");
+			//printf("less_than_four_node\n");
+			//printf("less_than_four_node\n");
 			two_or_three_node(ab_table);
+			//put_table(ab_table);
 		}
-		else
-			printf("mode_than_four_node\n");
+		//else
+			//printf("mode_than_four_node\n");
 		if (can_sort(ab_table, A_TABLE))
 		{
 			//printf("A_table is not sorted\n");
@@ -65,7 +66,7 @@ int	push_swap(size_t len, int *array)
 		//{
 			//printf("A_table is sorted\n");
 		//}
-		put_table(ab_table);
+		//put_table(ab_table);
 		if (can_sort(ab_table, A_TABLE) == false && can_sort(ab_table, B_TABLE))
 		{
 			//printf("B_table is not sorted. so execute diviede_ab_table\n");
@@ -80,8 +81,8 @@ int	push_swap(size_t len, int *array)
 		//reverse_a(ab_table);
 		//reverse_b(ab_table);
 	}
-	printf("\n\n test=%d,end_sort\n", test);
-	put_table(ab_table);
+	//printf("\n\n test=%d,end_sort\n", test);
+	//put_table(ab_table);
 	clear_ab_table(ab_table);
 	return (true);
 }
