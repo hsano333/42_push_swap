@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:04:58 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 03:18:47 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 03:27:18 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define DEQUE_H
 # include <stdlib.h>
 # include <stdbool.h>
-//# include "deque_util.h"
 
 typedef struct s_compre
 {
@@ -22,7 +21,6 @@ typedef struct s_compre
 	size_t	compre;
 	size_t	id;
 }	t_compre;
-
 
 typedef struct s_deque
 {

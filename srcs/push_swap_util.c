@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 21:44:12 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 02:39:09 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 03:18:12 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	can_sort(t_abtable *table, char target)
 	node = nil_node->next;
 	while (target != B_TABLE && node->next != nil_node)
 	{
-		if (node->content->compre + 1 != (((t_deque *)node->next)->content->compre))
+		if (node->content->compre + 1 != \
+					(((t_deque *)node->next)->content->compre))
 			return (true);
 		node = node->next;
 	}
@@ -40,7 +41,8 @@ int	can_sort(t_abtable *table, char target)
 	node = nil_node->next;
 	while (target == B_TABLE && node->next != nil_node)
 	{
-		if (node->content->compre != (((t_deque *)node->next)->content->compre + 1))
+		if (node->content->compre != \
+						((t_deque *)node->next)->content->compre + 1)
 			return (true);
 		node = node->next;
 	}

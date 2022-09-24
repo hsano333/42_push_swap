@@ -6,12 +6,13 @@
 /*   By: hsano </var/mail/hsano>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:53:05 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/19 00:46:13 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 03:24:55 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_STR_H
 # define LIBFT_STR_H
+
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_atoi(const char *str, int *long_over_flag);
 long	ft_atol(const char *str, int *long_over_flag);

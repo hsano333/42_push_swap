@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:30:35 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 03:12:23 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 03:13:40 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ t_deque	*execute_divide_cmd(t_abtable *table, t_deque *node, \
 	return (next_node);
 }
 
-
-static t_pivot	divide_ab_table_loop(t_abtable *table, t_deque *node, char target)
+static t_pivot	divide_ab_table_loop(t_abtable *table, \
+									t_deque *node, char target)
 {
 	size_t	len;
 	size_t	id;
@@ -125,7 +125,6 @@ static t_pivot	divide_ab_table_loop(t_abtable *table, t_deque *node, char target
 	}
 	return (pivot);
 }
-
 
 void	divide_ab_table(t_abtable *table, char target)
 {

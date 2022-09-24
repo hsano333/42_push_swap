@@ -6,13 +6,13 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 02:27:03 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/22 17:41:35 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 03:28:17 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef QUICK_SORT_H
 # define QUICK_SORT_H
-#include <stdio.h>
+# include <stdio.h>
 
 typedef struct s_pivot
 {
