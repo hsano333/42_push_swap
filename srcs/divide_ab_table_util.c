@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:57:03 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 02:28:48 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:35:43 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_deque	*execute_shift(t_abtable *table, char target, t_pivot pivot, t_deque *node)
 {
 	t_deque	*nil_node;
-	//printf("target =%d, pivot=%zu\n", target, pivot.middle);
 	if (table->ra_flag == true || table->rb_flag == true)
 		return node;
 	nil_node = search_nil(node);
@@ -34,7 +33,6 @@ t_deque	*execute_shift(t_abtable *table, char target, t_pivot pivot, t_deque *no
 	else
 		return (node);
 	return (nil_node->next);
-	//printf("end execute_shift No.1\n");
 }
 
 int	execute_reverse(t_abtable *table)
@@ -49,9 +47,6 @@ int	execute_reverse(t_abtable *table)
 
 	cnt_a = table->reverse_count_a;
 	cnt_b = table->reverse_count_b;
-	//printf("execute_reverse test No.1 cnt_a=%d, b=%d\n", cnt_a, cnt_b);
-	//if (table->reverse_count_a == 0 && table->reverse_count_a == 0)
-		//return (false);
 	if (cnt_a > 0 && cnt_b > 0 && is_rrr(table))
 		rrr(table);
 	else if (cnt_a > 0 && is_rra(table))
@@ -91,7 +86,6 @@ static void	execute_rotate_a(t_abtable *table, int force)
 		if (table->ra_flag && table->rb_flag)
 		{
 			rr(table);
-			//table->ra_flag = false;
 			table->rb_flag = false;
 			table->reverse_count_a++;
 			table->reverse_count_b++;
@@ -104,41 +98,6 @@ static void	execute_rotate_a(t_abtable *table, int force)
 		else
 			table->ra_flag = true;
 	}
-	/*
-	if (table->rb_flag && force == false)
-	{
-		rr(table);
-		table->ra_flag = false;
-		table->rb_flag = false;
-		table->reverse_count_a++;
-		table->reverse_count_b++;
-	}
-	else if (force == true && table->ra_flag)
-	{
-		table->reverse_count_a++;
-		ra(table);
-		table->ra_flag = false;
-	}
-	else if (force == true && table->rb_flag)
-	{
-		table->reverse_count_b++;
-		rb(table);
-		table->rb_flag = false;
-
-	}
-	else if (force == true)
-	{
-		table->ra_flag = false;
-	}
-	else if (table->ra_flag)
-	{
-		ra(table);
-		table->reverse_count_a++;
-		//table->ra_flag = false;
-	}
-	else 
-		table->ra_flag = true;
-		*/
 }
 
 static void	execute_rotate_b(t_abtable *table, int force)
@@ -173,7 +132,6 @@ static void	execute_rotate_b(t_abtable *table, int force)
 			table->ra_flag = false;
 			table->reverse_count_a++;
 			table->reverse_count_b++;
-			//table->rb_flag = false;
 		}
 		else if (table->rb_flag)
 		{
@@ -183,44 +141,6 @@ static void	execute_rotate_b(t_abtable *table, int force)
 		else
 			table->rb_flag = true;
 	}
-
-
-	/*
-	if (table->ra_flag && force == false)
-	{
-		rr(table);
-		table->ra_flag = false;
-		table->rb_flag = false;
-		table->reverse_count_a++;
-		table->reverse_count_b++;
-	}
-	else if (force == true && table->rb_flag)
-	{
-		rb(table);
-		table->reverse_count_b++;
-		table->rb_flag = false;
-	}
-	else if (force == true && table->ra_flag)
-	{
-		ra(table);
-		table->reverse_count_a++;
-		table->ra_flag = false;
-
-	}
-	else if (force == true)
-	{
-		table->rb_flag = false;
-	}
-	else if (table->rb_flag)
-	{
-		rb(table);
-		table->reverse_count_b++;
-		//table->rb_flag = false;
-	}
-	else
-		table->rb_flag = true;
-		*/
-
 }
 
 void	execute_rotate(t_abtable *table, char target, int force, int final)
@@ -229,8 +149,6 @@ void	execute_rotate(t_abtable *table, char target, int force, int final)
 	{
 		if (target == A_TABLE && table->first_flag && table->rb_flag)
 			rb(table);
-		//else if ((target == B_TABLE && table->rb_flag) || (table->first_flag && table->rb_flag))
-			//rb(table);
 		table->ra_flag = false;
 		table->rb_flag = false;
 	}

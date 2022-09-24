@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 13:56:28 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 00:31:57 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:34:51 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,7 @@ static void	get_node_compre(t_deque *node, char *result)
 			result[i] = (int)(tmp[i] - min) + 'A';
 		else
 			result[i] = 'Z';
-
 	}
-
-	//while (--i != -1)
-		//result[i] = (int)(tmp[i] - min) + 'A';
 }
 
 char	*two_or_three_node_a(t_abtable *table)

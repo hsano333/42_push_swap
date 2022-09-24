@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 02:57:45 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 23:59:40 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:33:52 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,9 @@ int	is_two_or_three_node(t_abtable *table)
 	a_id = 0;
 	b_id = 0;
 	cnt = 0;
-	//if (a_node->content != NULL)
-		//a_id = a_node->content->id;
-	//if (b_node->content != NULL)
-		//b_id = b_node->content->id;
-	//while ((a_node->content != NULL) && (a_node->content->id == a_id) && ++cnt)
-		//a_node = a_node->next;
 	cnt = count_node(a_node, 0);
 	if ((2 <= cnt && cnt <= 3) || check_difference_id(a_node))
 		return (true);
-	//if (can_sort(ab_table, A_TABLE))
-		//return (false);
-
-	//cnt = 0;
-	//while ((b_node->content != NULL) && (b_node->content->id == b_id) && ++cnt)
-		//b_node = b_node->next;
 	cnt = count_node(b_node, 0);
 	if (can_sort(table, A_TABLE) == false &&  (cnt == 2 || check_difference_id(b_node)))
 		return (true);
@@ -100,14 +88,8 @@ void	execute_inst(t_abtable *table, char *common, char *independence, char targe
 	char	**split_c;
 	char	**split_i;
 
-	//printf("execute_inst No.1 \n");
-	//printf("common=%p\n", common);
-	//printf("independence=%s\n", independence);
-	//printf("execute_inst No.2 \n");
-	//
 	split_c = ft_split(common, ' ');
 	split_i = ft_split(independence, ' ');
-
 	if (!split_c || !split_i)
 	{
 		ft_free_split(split_c);
@@ -125,23 +107,13 @@ void	two_or_three_node(t_abtable *table)
 	int		len_b;
 	char	*inst_a;
 	char	*inst_b;
-	//char	*common;
 
-	//ft_printf("test No.1\n");
 	inst_a = two_or_three_node_a(table);
 	inst_b = two_or_three_node_b(table);
-	//printf("test No.2 inst_a=%s, inst_b=%s\n", inst_a, inst_b);
 	len_a = (int)ft_strlen(inst_a);
 	len_b = (int)ft_strlen(inst_b);
-	//printf("test No.3 inst_a=%d, inst_b=%d\n", len_a, len_b);
-	//common = get_common_instruction(inst_a, inst_b, len_a, len_b);
-	//printf("test No.4 common=%s\n", common);
-	//if (common == NULL)
-		//return ;
-	//printf("test No.5 common=%s\n", common);
 	if (len_a > len_b)
 		execute_inst(table, inst_b, inst_a, A_TABLE);
 	else
 		execute_inst(table, inst_a, inst_b, B_TABLE);
-
 }

@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 21:44:12 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 22:18:38 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:39:09 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,14 @@ int	can_sort(t_abtable *table, char target)
 
 	if (target == BOTH_TABLE && count_node(table->b, 0) > 0)
 		return (true);
-	//if (target == B_TABLE && can_sort(table, A_TABLE) == true)
-		//return (false);
 	nil_node = search_nil(table->a);
 	node = nil_node->next;
 	while (target != B_TABLE && node->next != nil_node)
 	{
-		//printf("can_sort No.1  now:%zu, next:%zu\n", node->content->compre, ((t_deque *)node->next)->content->compre);
-		//printf("can_sort No.2  nil:%p, now:%p, next:%p\n", nil_node, node, node->next);
 		if (node->content->compre + 1 != (((t_deque *)node->next)->content->compre))
 			return (true);
-		//printf("can_sort No.3  nil:%p, now:%p, next:%p\n", nil_node, node, node->next);
 		node = node->next;
 	}
-	//printf("can sort No.2\n");
 	nil_node = search_nil(table->b);
 	node = nil_node->next;
 	while (target == B_TABLE && node->next != nil_node)
@@ -61,7 +55,6 @@ void	reverse_a(t_abtable *table)
 	size_t		base_val;
 	size_t		next_val;
 
-	//printf("reverse_a start\n");
 	nil_node_a = search_nil(table->a);
 	if (nil_node_a->next == nil_node_a)
 		return ;
@@ -109,27 +102,3 @@ void	reverse_b(t_abtable *table)
 		next_val = node_b->content->compre;
 	}
 }
-
-
-/*
-void	convert_val_str(t_deque *node, int mode, int size)
-{
-	t_deque	*nil_node;
-	t_deque	*tmp_node;
-	size_t	order[100];
-	int		i;
-	int		min;
-
-	nil_node = search_nil(node);
-	tmp_node = nil_node->next;
-	i = 0;
-	min = INT_MAX;
-	while (i < size)
-	{
-		if (min < tmp_node->content->compre)
-			min = tmp_node->content->compre;
-		order[i] = tmp_node->content->compre;
-		tmp_node = tmp_node->next;
-	}
-}
-*/

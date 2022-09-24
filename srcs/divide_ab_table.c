@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:30:35 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 02:06:53 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:36:23 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ t_deque	*execute_divide_cmd(t_abtable *table, t_deque *node, char target, t_pivo
 	{
 		if (node->content->compre <= pivot.middle)
 		{
-			//update_id(node, table->no + 1);
-			//execute_rotate(table, B_TABLE, false, false);
 			table->reverse_count_b++;
 			rb(table);
 		}
@@ -93,24 +91,9 @@ t_deque	*execute_divide_cmd(t_abtable *table, t_deque *node, char target, t_pivo
 			tmp_compre = node->content->compre;
 			id = node->content->id;
 			update_id(node, table->no + 1);
-			//if (tmp_compre <= pivot.large)
-				//update_id(node, table->no + 2);
-			//if ((node->content->compre <= pivot.large) && (table->rb_flag || count_node(search_nil(table->b), id) >= 2))
-			//if (table->rb_flag || ((table->ra_flag) && (tmp_compre <= pivot.large) && count_node(search_nil(table->b), id) >= 2))
-			//if (table->rb_flag || table->ra_flag)
-			//{
-				//execute_rotate(table, A_TABLE, true, false);
-			//}
 			pa(table);
-			//if ((tmp_compre <= pivot.large) && (count_node(search_nil(table->a), id) >= 2))
-			//if ((tmp_compre <= pivot.large))
-			//{
-				//table->reverse_count_a++;
-				//execute_rotate(table, A_TABLE, false, false);
-			//}
 		}
 	}
-	//node = node->next;
 	next_node = execute_shift(table, target, pivot, next_node);
 	return (next_node);
 }
@@ -124,8 +107,6 @@ void	divide_ab_table(t_abtable *table, char target)
 	size_t	id;
 	size_t	len;
 
-	//node = countup_table_id(table, target);
-	
 	table->no += 2;
 	node = table->a;
 	if (target == B_TABLE)
@@ -135,22 +116,12 @@ void	divide_ab_table(t_abtable *table, char target)
 	id = get_node_id(node);
 	pivot = calc_pivot(table, target, id);
 	len = count_node(node, id) + 1;
-	//t_deque	*next_node;
-	//while (len > 0 && node != nil_node && is_more_than_three(node, id))
 	while (len > 0 && node != nil_node)
 	{
-		//next_node = ((t_deque *)node->next)->next;
 		if (node->content->id == id && --len > 0)
-		//{
 			node = execute_divide_cmd(table, node, target, pivot);
 		else
 			break ;
-			//node = nil_node->next;
-			//node = nil_node->next;
-		//}
-		//else 
-			//node = node->next;
-
 		if (can_sort(table, target) == false)
 		{
 			init_flag(table, target);
@@ -160,6 +131,4 @@ void	divide_ab_table(t_abtable *table, char target)
 	execute_rotate(table, target, false, true);
 	execute_shift(table, BOTH_TABLE, pivot, node);
 	rotation_for_reverse(table);
-	//while (execute_reverse(table))
-		//id++;
 }

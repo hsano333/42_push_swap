@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 02:27:48 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/22 14:47:00 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:39:26 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	sa(t_abtable *table)
 	if (table->put_flag)
 		ft_printf("sa\n");
 }
-
 
 void	sb(t_abtable *table)
 {

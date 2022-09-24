@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 02:33:14 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/22 14:50:47 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:39:20 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,3 @@ void	rr(t_abtable *table)
 		ft_printf("rr\n");
 	table->put_flag = tmp_flag;
 }
-
-
