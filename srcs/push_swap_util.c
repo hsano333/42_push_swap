@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 21:44:12 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 01:51:27 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 16:56:28 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 #include "ft_printf.h"
 #include "push_swap_util.h"
 
-#include <stdio.h>
+void	kill_process(t_abtable *table)
+{
+	clear_ab_table(table);
+	exit(EXIT_FAILURE);
+}
+
 int	can_sort(t_abtable *table, char target)
 {
 	t_deque	*nil_node;

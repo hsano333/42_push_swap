@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:58:36 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 01:55:29 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 13:20:12 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "deque.h"
 #include "push_swap_util.h"
 #include "ab_table_util.h"
+#include "two_or_three_node.h"
 
 int	push_swap(size_t len, int *array)
 {
@@ -39,6 +40,16 @@ int	push_swap(size_t len, int *array)
 		//}
 
 		init_flag(ab_table, BOTH_TABLE);
+		if (is_two_or_three_node(ab_table))
+		{
+			printf("less_than_four_node\n");
+			printf("less_than_four_node\n");
+			printf("less_than_four_node\n");
+			printf("less_than_four_node\n");
+			two_or_three_node(ab_table);
+		}
+		else
+			printf("mode_than_four_node\n");
 		if (can_sort(ab_table, A_TABLE))
 		{
 			//printf("A_table is not sorted\n");

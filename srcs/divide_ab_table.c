@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:30:35 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 02:39:32 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 03:11:04 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <limits.h>
 #include <stdio.h>
 
-static t_pivot	calc_pivot(t_abtable *table, char target, int id)
+static t_pivot	calc_pivot(t_abtable *table, char target, size_t id)
 {
 	t_deque	*node;
 	t_deque	*nil_node;
@@ -50,7 +50,7 @@ static t_pivot	calc_pivot(t_abtable *table, char target, int id)
 static void	execute_table_a(t_abtable *table, t_deque *node, t_pivot pivot)
 {
 	size_t	tmp_compre;
-	int		id;
+	size_t	id;
 
 	if (node->content->compre >= pivot.large)
 	{
@@ -88,7 +88,7 @@ t_deque	*execute_divide_cmd(t_abtable *table, t_deque *node, char target, t_pivo
 {
 	size_t	tmp_compre;
 	t_deque	*next_node;
-	int		id;
+	size_t	id;
 
 	next_node = node->next;
 	//printf("target=%c, compre=%zu ,pivot, max=%zu, middle=%zu,min=%zu\n", target, node->content->compre, pivot.large, pivot.middle, pivot.small);
@@ -131,10 +131,10 @@ t_deque	*execute_divide_cmd(t_abtable *table, t_deque *node, char target, t_pivo
 
 void	divide_ab_table(t_abtable *table, char target)
 {
-	int		id;
 	t_pivot	pivot;
 	t_deque	*node;
 	t_deque	*nil_node;
+	size_t	id;
 	size_t	len;
 
 	//node = countup_table_id(table, target);

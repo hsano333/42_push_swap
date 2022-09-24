@@ -6,12 +6,13 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:27:04 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 02:14:12 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 16:10:02 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ab_table_util.h"
 #include "can_command.h"
+#include "libft_str.h"
 
 int	get_node_id(t_deque *node)
 {
@@ -80,21 +81,6 @@ void	rotation_for_reverse(t_abtable *table)
 	}
 }
 
-int	is_less_than_four_table_a(t_abtable *table)
-{
-	t_deque	*node;
-	t_deque	*nil_node;
-	int		id;
-
-	node = table->a;
-	nil_node = search_nil(node);
-	node = nil_node->next;
-	if (node == nil_node)
-		return (false);
-	id = node->content->id;
-	return (true);
-}
-
 void	init_flag(t_abtable *table, char target)
 {
 	if (target == A_TABLE)
@@ -114,4 +100,31 @@ void	init_flag(t_abtable *table, char target)
 		table->ra_flag = false;
 		table->rb_flag = false;
 	}
+}
+
+char	*get_common_instruction(char *inst_a, char *inst_b, size_t len_a, size_t len_b)
+{
+	char	*common;
+	size_t		i;
+
+	i = 0;
+	if (len_a == len_b)
+		common = inst_a;
+	else if (len_a > len_b)
+	{
+		while (i++ < len_a)
+		{
+			if (ft_strnstr(&(inst_a[i]), inst_b, len_b))
+				common = &(inst_a[i]);
+		}
+	}
+	else
+	{
+		while (i++ < len_b)
+		{
+			if (ft_strnstr(&(inst_b[i]), inst_a, len_a))
+				common = &(inst_b[i]);
+		}
+	}
+	return (common);
 }

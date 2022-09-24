@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 21:50:46 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/22 14:23:37 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 16:56:12 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@
 
 int		can_sort(t_abtable *table, char target);
 void	reverse_a(t_abtable *table);
+void	kill_process(t_abtable *table);
 #endif

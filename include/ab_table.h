@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 02:27:59 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 02:34:26 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/24 16:48:15 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_abtable
 {
 	t_deque	*a;
 	t_deque	*b;
-	int		no;
+	size_t	no;
 	int		reverse_count_a;
 	int		reverse_count_b;
 	int		put_flag;
@@ -45,6 +45,7 @@ void		rrr(t_abtable *table);
 void		put_table(t_abtable *table);
 void		divide_ab_table(t_abtable *table, char target);
 void		clear_ab_table(t_abtable *table);
-t_abtable	*create_ab_table(t_deque *a, t_deque *b);
 int			get_id(t_deque node);
+void		execute_str_instruction(t_abtable *table, char *inst);
+t_abtable	*create_ab_table(t_deque *a, t_deque *b);
 #endif
