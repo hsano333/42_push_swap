@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:58:36 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 00:26:09 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:30:34 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	push_swap(size_t len, int *array)
 	while (can_sort(ab_table, BOTH_TABLE))
 	{
 		//put_table(ab_table);
-		//if (test > 277)
+		//if (test > 50)
 			//break;
 		//test++;
 		//if (is_less_than_four_table_a(table))
@@ -39,7 +39,6 @@ int	push_swap(size_t len, int *array)
 //
 		//}
 
-		init_flag(ab_table, BOTH_TABLE);
 		if (is_two_or_three_node(ab_table))
 		{
 			//printf("less_than_four_node\n");
@@ -78,10 +77,11 @@ int	push_swap(size_t len, int *array)
 			//reverse_a(ab_table);
 			//printf("B_table is sorted\n");
 		}
+		init_flag(ab_table, BOTH_TABLE);
 		//reverse_a(ab_table);
 		//reverse_b(ab_table);
 	}
-	//printf("\n\n test=%d,end_sort\n", test);
+	////printf("\n\n test=%d,end_sort\n", test);
 	//put_table(ab_table);
 	clear_ab_table(ab_table);
 	return (true);

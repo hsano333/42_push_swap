@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:30:35 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 00:22:34 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:06:53 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,7 @@ static void	execute_table_a(t_abtable *table, t_deque *node, t_pivot pivot)
 	size_t	id;
 
 	if (node->content->compre >= pivot.large)
-	{
-		//update_id(node, table->no + 1);
 		execute_rotate(table, A_TABLE, false, false);
-	}
 	else if (node->content->compre < pivot.large)
 	{
 		tmp_compre = node->content->compre;
@@ -63,19 +60,11 @@ static void	execute_table_a(t_abtable *table, t_deque *node, t_pivot pivot)
 		update_id(node, table->no + 1);
 		if (tmp_compre > pivot.small)
 			update_id(node, table->no + 2);
-		//if (table->ra_flag || ((tmp_compre >= pivot.small) && (table->ra_flag || count_node(search_nil(table->b), id) >= 2)))
-		//if (table->ra_flag || ((table->rb_flag) && (tmp_compre > pivot.small) && count_node(search_nil(table->b), id) >= 2))
 		if (table->ra_flag || (table->rb_flag))
-		{
 			execute_rotate(table, B_TABLE, true, false);
-		}
 		pb(table);
-		//if ((tmp_compre > pivot.small) && (count_node(search_nil(table->b), id) >= 2))
-		if ((tmp_compre > pivot.small))
-		{
+		if ((!table->first_flag && tmp_compre > pivot.small) || (table->first_flag && tmp_compre <= pivot.small))
 			execute_rotate(table, B_TABLE, false, false);
-			//table->reverse_count_b++;
-		}
 	}
 }
 

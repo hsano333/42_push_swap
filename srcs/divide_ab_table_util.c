@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:57:03 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 01:50:43 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:28:48 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,10 +227,10 @@ void	execute_rotate(t_abtable *table, char target, int force, int final)
 {
 	if (final == true)
 	{
-		if (target == A_TABLE && table->ra_flag)
-			ra(table);
-		else if (target == B_TABLE && table->rb_flag)
+		if (target == A_TABLE && table->first_flag && table->rb_flag)
 			rb(table);
+		//else if ((target == B_TABLE && table->rb_flag) || (table->first_flag && table->rb_flag))
+			//rb(table);
 		table->ra_flag = false;
 		table->rb_flag = false;
 	}

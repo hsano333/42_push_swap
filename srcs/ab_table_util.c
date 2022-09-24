@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:27:04 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 23:21:58 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:06:01 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	rotation_for_reverse(t_abtable *table)
 		table->reverse_count_a = 0;
 	if (id_is_more_than_one(table->b) == false)
 		table->reverse_count_b = 0;
-	while (1)
+	while (table->first_flag == false)
 	{
 		a_flag = id_is_more_than_one(table->a) && ((table->reverse_count_a > 0 || is_rra(table)));
 		b_flag = id_is_more_than_one(table->b) && ((table->reverse_count_b > 0 || is_rrb(table)));
@@ -73,10 +73,14 @@ void	rotation_for_reverse(t_abtable *table)
 		else
 			break ;
 	}
+	table->reverse_count_a = 0;
+	table->reverse_count_b = 0;
+	table->first_flag = false;
 }
 
 void	init_flag(t_abtable *table, char target)
 {
+	table->first_flag = false;
 	if (target == A_TABLE)
 	{
 		table->reverse_count_a = 0;
