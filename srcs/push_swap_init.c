@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 09:54:34 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/23 00:12:12 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 03:03:16 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	is_duplicate(size_t len, int *array)
 		if (array[i] == array[i + 1])
 		{
 			result = true;
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -57,7 +57,7 @@ int	is_duplicate(size_t len, int *array)
 
 t_compre	*create_t_compre(int origin, size_t compre)
 {
-	t_compre *val;
+	t_compre	*val;
 
 	val = (t_compre *)malloc(sizeof(t_compre) * 1);
 	if (!val)
@@ -67,7 +67,6 @@ t_compre	*create_t_compre(int origin, size_t compre)
 	val->id = 0;
 	return (val);
 }
-
 
 t_deque	*convert_deque(size_t len, int	*array, t_deque *node, int *cp_array)
 {
@@ -79,7 +78,6 @@ t_deque	*convert_deque(size_t len, int	*array, t_deque *node, int *cp_array)
 	j = 0;
 	while (j < len)
 	{
-
 		i = 0;
 		while (array[j] != cp_array[i])
 			i++;
@@ -91,7 +89,6 @@ t_deque	*convert_deque(size_t len, int	*array, t_deque *node, int *cp_array)
 		}
 		j++;
 	}
-	//put_all(node);
 	return (node);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 13:56:28 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 02:34:51 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 03:02:10 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	get_node_compre(t_deque *node, char *result)
 	size_t	cnt;
 	size_t	min;
 	size_t	tmp[4];
-	
+
 	i = 3;
 	while (i != -1)
 		tmp[i--] = '\0';
@@ -54,18 +54,18 @@ char	*two_or_three_node_a(t_abtable *table)
 		return (NULL);
 	id = node->content->id;
 	get_node_compre(node, result);
-	if (!ft_strncmp(result, "ACB", 3 ))
-		return INSTRUCTIONS_B;
-	else if (!ft_strncmp(result, "BAC", 3 ))
-		return INSTRUCTIONS_A;
-	else if (!ft_strncmp(result, "BCA", 3 ))
-		return INSTRUCTIONS_BA;
-	else if (!ft_strncmp(result, "CAB", 3 ))
-		return INSTRUCTIONS_AB;
-	else if (!ft_strncmp(result, "CBA", 3 ))
-		return INSTRUCTIONS_ABA;
-	else if (!ft_strncmp(result, "BA", 2 ))
-		return INSTRUCTIONS_A;
+	if (!ft_strncmp(result, "ACB", 3))
+		return (INSTRUCTIONS_B);
+	else if (!ft_strncmp(result, "BAC", 3))
+		return (INSTRUCTIONS_A);
+	else if (!ft_strncmp(result, "BCA", 3))
+		return (INSTRUCTIONS_BA);
+	else if (!ft_strncmp(result, "CAB", 3))
+		return (INSTRUCTIONS_AB);
+	else if (!ft_strncmp(result, "CBA", 3))
+		return (INSTRUCTIONS_ABA);
+	else if (!ft_strncmp(result, "BA", 2))
+		return (INSTRUCTIONS_A);
 	return ("");
 }
 
@@ -81,22 +81,22 @@ char	*two_or_three_node_b(t_abtable *table)
 		return (NULL);
 	id = node->content->id;
 	get_node_compre(node, result);
-	if (!ft_strncmp(result, "CAB", 3 ))
-		return INSTRUCTIONS_B;
-	else if (!ft_strncmp(result, "BCA", 3 ))
-		return INSTRUCTIONS_A;
-	else if (!ft_strncmp(result, "BAC", 3 ))
-		return INSTRUCTIONS_BA;
-	else if (!ft_strncmp(result, "ACB", 3 ))
-		return INSTRUCTIONS_AB;
-	else if (!ft_strncmp(result, "ABC", 3 ))
-		return INSTRUCTIONS_ABA;
-	else if (!ft_strncmp(result, "AB", 2 ))
-		return INSTRUCTIONS_A;
+	if (!ft_strncmp(result, "CAB", 3))
+		return (INSTRUCTIONS_B);
+	else if (!ft_strncmp(result, "BCA", 3))
+		return (INSTRUCTIONS_A);
+	else if (!ft_strncmp(result, "BAC", 3))
+		return (INSTRUCTIONS_BA);
+	else if (!ft_strncmp(result, "ACB", 3))
+		return (INSTRUCTIONS_AB);
+	else if (!ft_strncmp(result, "ABC", 3))
+		return (INSTRUCTIONS_ABA);
+	else if (!ft_strncmp(result, "AB", 2))
+		return (INSTRUCTIONS_A);
 	return ("");
 }
 
-void	execute_str_both_instruction_wrapper(t_abtable *table, char *inst)
+void	execute_str_both_inst_wrapper(t_abtable *table, char *inst)
 {
 	if (!ft_strncmp(inst, "re", 2))
 		execute_str_instruction(table, "rrr");
@@ -106,7 +106,7 @@ void	execute_str_both_instruction_wrapper(t_abtable *table, char *inst)
 		execute_str_instruction(table, "rr");
 }
 
-void	execute_str_instruction_wrapper(t_abtable *table, char *inst, char target)
+void	execute_str_inst_wrapper(t_abtable *table, char *inst, char target)
 {
 	if (target == A_TABLE)
 	{

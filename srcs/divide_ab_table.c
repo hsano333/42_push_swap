@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:30:35 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 02:36:23 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 03:12:23 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,14 @@ static void	execute_table_a(t_abtable *table, t_deque *node, t_pivot pivot)
 		if (table->ra_flag || (table->rb_flag))
 			execute_rotate(table, B_TABLE, true, false);
 		pb(table);
-		if ((!table->first_flag && tmp_compre > pivot.small) || (table->first_flag && tmp_compre <= pivot.small))
+		if ((!table->first_flag && tmp_compre > pivot.small) \
+				|| (table->first_flag && tmp_compre <= pivot.small))
 			execute_rotate(table, B_TABLE, false, false);
 	}
 }
 
-
-
-t_deque	*execute_divide_cmd(t_abtable *table, t_deque *node, char target, t_pivot pivot)
+t_deque	*execute_divide_cmd(t_abtable *table, t_deque *node, \
+											char target, t_pivot pivot)
 {
 	size_t	tmp_compre;
 	t_deque	*next_node;
@@ -79,7 +79,7 @@ t_deque	*execute_divide_cmd(t_abtable *table, t_deque *node, char target, t_pivo
 	next_node = node->next;
 	if (target == A_TABLE)
 		execute_table_a(table, node, pivot);
-	else if(target == B_TABLE)
+	else if (target == B_TABLE)
 	{
 		if (node->content->compre <= pivot.middle)
 		{
@@ -99,18 +99,13 @@ t_deque	*execute_divide_cmd(t_abtable *table, t_deque *node, char target, t_pivo
 }
 
 
-void	divide_ab_table(t_abtable *table, char target)
+static t_pivot	divide_ab_table_loop(t_abtable *table, t_deque *node, char target)
 {
-	t_pivot	pivot;
-	t_deque	*node;
-	t_deque	*nil_node;
-	size_t	id;
 	size_t	len;
+	size_t	id;
+	t_pivot	pivot;
+	t_deque	*nil_node;
 
-	table->no += 2;
-	node = table->a;
-	if (target == B_TABLE)
-		node = table->b;
 	nil_node = search_nil(node);
 	node = nil_node->next;
 	id = get_node_id(node);
@@ -128,6 +123,20 @@ void	divide_ab_table(t_abtable *table, char target)
 			break ;
 		}
 	}
+	return (pivot);
+}
+
+
+void	divide_ab_table(t_abtable *table, char target)
+{
+	t_deque	*node;
+	t_pivot	pivot;
+
+	table->no += 2;
+	node = table->a;
+	if (target == B_TABLE)
+		node = table->b;
+	pivot = divide_ab_table_loop(table, node, target);
 	execute_rotate(table, target, false, true);
 	execute_shift(table, BOTH_TABLE, pivot, node);
 	rotation_for_reverse(table);

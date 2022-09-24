@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 01:00:28 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/20 11:30:56 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:51:17 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,3 @@ void	swap_deque(t_deque *src_node)
 		return ;
 	nil_node = search_nil(src_node);
 }
-
-

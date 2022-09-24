@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 02:57:45 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 02:33:52 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:59:45 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,39 +57,41 @@ int	is_two_or_three_node(t_abtable *table)
 	if ((2 <= cnt && cnt <= 3) || check_difference_id(a_node))
 		return (true);
 	cnt = count_node(b_node, 0);
-	if (can_sort(table, A_TABLE) == false &&  (cnt == 2 || check_difference_id(b_node)))
+	if (!can_sort(table, A_TABLE) && (cnt == 2 || check_difference_id(b_node)))
 		return (true);
 	return (false);
 }
 
-static void	loop_execute_inst(t_abtable *table, char **split_c, char **split_i, char target)
+static void	loop_execute_inst(t_abtable *table, char **split_c, \
+		char **split_i, char target)
 {
 	int		i;
 	int		c;
+	size_t	len_c;
 
 	i = 0;
 	c = 0;
 	while (split_i[i])
 	{
-		if (split_c[c] && !ft_strncmp(split_i[i], split_c[c], ft_strlen(split_c[c])))
+		len_c = ft_strlen(split_c[c]);
+		if (split_c[c] && !ft_strncmp(split_i[i], split_c[c], len_c))
 		{
-			execute_str_both_instruction_wrapper(table, split_i[i]);
+			execute_str_both_inst_wrapper(table, split_i[i]);
 			c++;
 		}
 		else
-			execute_str_instruction_wrapper(table, split_i[i], target);
+			execute_str_inst_wrapper(table, split_i[i], target);
 		i++;
 	}
 }
 
-#include <stdio.h>
-void	execute_inst(t_abtable *table, char *common, char *independence, char target)
+void	execute_inst(t_abtable *table, char *common, char *mono, char target)
 {
 	char	**split_c;
 	char	**split_i;
 
 	split_c = ft_split(common, ' ');
-	split_i = ft_split(independence, ' ');
+	split_i = ft_split(mono, ' ');
 	if (!split_c || !split_i)
 	{
 		ft_free_split(split_c);

@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 02:58:53 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 23:22:14 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 02:58:13 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	two_or_three_node(t_abtable *table);
 char	*two_or_three_node_a(t_abtable *table);
 char	*two_or_three_node_b(t_abtable *table);
 char	*get_common_instruction(char *inst_a, char *inst_b, int len_a, int len_b);
-void	execute_str_instruction_wrapper(t_abtable *table, char *inst, char target);
-void	execute_str_both_instruction_wrapper(t_abtable *table, char *inst);
+void	execute_str_inst_wrapper(t_abtable *table, char *inst, char target);
+void	execute_str_both_inst_wrapper(t_abtable *table, char *inst);
 #endif
