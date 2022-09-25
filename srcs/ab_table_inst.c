@@ -6,36 +6,36 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 16:43:15 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 19:04:20 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 20:41:28 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ab_table.h"
-#include "libft_str.h"
+#include "libft_mem.h"
 
 int	execute_str_instruction(t_abtable *table, char *inst)
 {
-	if (!ft_strncmp(inst, "rra", 3))
+	if (!ft_memcmp(inst, "rra", 4))
 		rra(table);
-	else if (!ft_strncmp(inst, "rrb", 3))
+	else if (!ft_memcmp(inst, "rrb", 4))
 		rrb(table);
-	else if (!ft_strncmp(inst, "rrr", 3))
+	else if (!ft_memcmp(inst, "rrr", 4))
 		rrr(table);
-	else if (!ft_strncmp(inst, "sa", 2))
+	else if (!ft_memcmp(inst, "sa", 3))
 		sa(table);
-	else if (!ft_strncmp(inst, "sb", 2))
+	else if (!ft_memcmp(inst, "sb", 3))
 		sb(table);
-	else if (!ft_strncmp(inst, "ss", 2))
+	else if (!ft_memcmp(inst, "ss", 3))
 		ss(table);
-	else if (!ft_strncmp(inst, "pa", 2))
+	else if (!ft_memcmp(inst, "pa", 3))
 		pa(table);
-	else if (!ft_strncmp(inst, "pb", 2))
+	else if (!ft_memcmp(inst, "pb", 3))
 		pb(table);
-	else if (!ft_strncmp(inst, "ra", 2))
+	else if (!ft_memcmp(inst, "ra", 3))
 		ra(table);
-	else if (!ft_strncmp(inst, "rb", 2))
+	else if (!ft_memcmp(inst, "rb", 3))
 		rb(table);
-	else if (!ft_strncmp(inst, "rr", 2))
+	else if (!ft_memcmp(inst, "rr", 3))
 		rr(table);
 	else
 		return (false);

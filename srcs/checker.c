@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 14:18:02 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 20:02:45 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 20:43:04 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,17 @@ static void	put_output(int result, t_abtable *table)
 		ft_printf("OK\n");
 }
 
+static void	free_all(char *line, char *inst, t_abtable *table)
+{
+	free(line);
+	free(inst);
+	clear_ab_table(table);
+}
+
 int	push_swap_checker(size_t len, int *array)
 {
 	int			result;
+	char		*inst;
 	char		*line;
 	t_abtable	*ab_table;
 
@@ -42,16 +50,18 @@ int	push_swap_checker(size_t len, int *array)
 	while (1)
 	{
 		line = get_next_line(0);
+		inst = ft_strtrim(line, "\n");
 		result = true;
-		if (line)
-			result = execute_str_instruction(ab_table, line);
+		if (line && inst)
+			result = execute_str_instruction(ab_table, inst);
 		else
 			break ;
-		free(line);
-		if (result == false)
+		if (!line || !inst || !result)
 			break ;
+		free(line);
+		free(inst);
 	}
 	put_output(result, ab_table);
-	clear_ab_table(ab_table);
+	free_all(line, inst, ab_table);
 	return (true);
 }
