@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 14:18:02 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 17:40:43 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 18:49:29 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,34 @@ int	push_swap_checker(size_t len, int *array)
 	t_abtable	*ab_table;
 	int			ng_flag;
 
-	ab_table = push_swap_init(len, array, true);
+	ab_table = push_swap_init(len, array, false);
 	if (!ab_table)
 		return (false);
 	ng_flag = false;
-	while (can_sort(ab_table, BOTH_TABLE))
+	while (1)
 	{
 		line = get_next_line(0);
 		if (line)
 			result = execute_str_instruction(ab_table, line);
 		else
-		{
-			ng_flag = true;
-			ft_printf("KO\n");
+		//{
+			//ng_flag = true;
+			//ft_printf("KO\n");
 			break ;
-		}
-		//ft_printf("line=%s\n", line);
+		//}
 		free(line);
 		if (result == false)
 		{
 			ng_flag = true;
-			ft_printf("Error\n");
+			//ft_printf("Error\n");
 			break ;
 		}
 	}
-	if (!ng_flag)
+	if (ng_flag)
+		ft_printf("Error\n");
+	else if (can_sort(ab_table, BOTH_TABLE))
+		ft_printf("KO\n");
+	else 
 		ft_printf("OK\n");
 	clear_ab_table(ab_table);
 	return (true);
