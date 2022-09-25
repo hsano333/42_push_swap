@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 09:54:34 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 03:03:16 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 16:42:08 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_deque	*convert_deque(size_t len, int	*array, t_deque *node, int *cp_array)
 	return (node);
 }
 
-t_abtable	*push_swap_init(size_t len, int	*array)
+t_abtable	*push_swap_init(size_t len, int	*array, int put_flag)
 {
 	t_deque		*table_a;
 	t_deque		*table_b;
@@ -112,5 +112,5 @@ t_abtable	*push_swap_init(size_t len, int	*array)
 	}
 	table_a = convert_deque(len, array, table_a, cp_array);
 	free(cp_array);
-	return (create_ab_table(table_a, table_b));
+	return (create_ab_table(table_a, table_b, put_flag));
 }

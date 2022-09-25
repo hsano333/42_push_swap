@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:47:51 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 02:44:18 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 16:43:02 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "deque.h"
 #include "ft_printf.h"
 
-t_abtable	*create_ab_table(t_deque *a, t_deque *b)
+t_abtable	*create_ab_table(t_deque *a, t_deque *b, int put_flag)
 {
 	t_abtable	*table;
 
@@ -34,6 +34,7 @@ t_abtable	*create_ab_table(t_deque *a, t_deque *b)
 	table->reverse_count_b = 0;
 	table->ra_flag = false;
 	table->rb_flag = false;
+	table->put_flag = put_flag;
 	return (table);
 }
 

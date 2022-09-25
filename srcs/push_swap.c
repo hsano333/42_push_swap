@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>                    +#+  +:+         */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:58:36 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 16:17:27 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 16:40:38 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	push_swap(size_t len, int *array)
 {
 	t_abtable	*ab_table;
 
-	ab_table = push_swap_init(len, array);
+	ab_table = push_swap_init(len, array, true);
 	if (!ab_table)
 		return (false);
 	while (can_sort(ab_table, BOTH_TABLE))

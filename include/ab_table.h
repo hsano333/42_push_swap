@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 02:27:59 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 14:31:56 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 16:42:34 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void		divide_ab_table(t_abtable *table, char target);
 void		clear_ab_table(t_abtable *table);
 int			get_id(t_deque node);
 int			execute_str_instruction(t_abtable *table, char *inst);
-t_abtable	*create_ab_table(t_deque *a, t_deque *b);
+t_abtable	*create_ab_table(t_deque *a, t_deque *b, int put_flag);
 #endif

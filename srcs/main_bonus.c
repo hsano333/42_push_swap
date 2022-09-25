@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:51:44 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 15:48:11 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 17:49:25 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(int argc, char **argv)
 	int		rval;
 	size_t	len;
 
+	if (argc == 1)
+		return (true);
 	list = NULL;
 	len = convert_argv_to_list(argc, argv, &list);
 	if (len && list)
