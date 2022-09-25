@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 14:18:02 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 19:12:07 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 20:02:45 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	push_swap_checker(size_t len, int *array)
 	while (1)
 	{
 		line = get_next_line(0);
+		result = true;
 		if (line)
 			result = execute_str_instruction(ab_table, line);
 		else
