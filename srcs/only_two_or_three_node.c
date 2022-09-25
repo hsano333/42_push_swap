@@ -6,14 +6,13 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 15:13:23 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 15:47:13 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 19:05:07 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "two_or_three_node.h"
 #include "libft_str.h"
 
-#include <stdio.h>
 int	is_only_two_or_three_node_in_table(t_deque *node)
 {
 	size_t	cnt;
@@ -24,7 +23,7 @@ int	is_only_two_or_three_node_in_table(t_deque *node)
 	return (false);
 }
 
-static char *only_two_or_three_node_inst_a(char *numbers)
+static char	*only_two_or_three_node_inst_a(char *numbers)
 {
 	if (!ft_strncmp(numbers, "ACB", 3))
 		return (INSTRUCTIONS_CAD);
@@ -41,7 +40,7 @@ static char *only_two_or_three_node_inst_a(char *numbers)
 	return ("");
 }
 
-static char *only_two_or_three_node_inst_b(char *numbers)
+static char	*only_two_or_three_node_inst_b(char *numbers)
 {
 	if (!ft_strncmp(numbers, "CAB", 3))
 		return (INSTRUCTIONS_CAD);
@@ -60,11 +59,9 @@ static char *only_two_or_three_node_inst_b(char *numbers)
 
 char	*only_two_or_three_node_inst(char target, char *numbers)
 {
-
 	if (target == A_TABLE)
 		return (only_two_or_three_node_inst_a(numbers));
 	else if (target == B_TABLE)
 		return (only_two_or_three_node_inst_b(numbers));
 	return (NULL);
 }
-

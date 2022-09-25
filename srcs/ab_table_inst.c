@@ -6,17 +6,15 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 16:43:15 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 16:54:02 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 19:04:20 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ab_table.h"
 #include "libft_str.h"
 
-#include <stdio.h>
 int	execute_str_instruction(t_abtable *table, char *inst)
 {
-	//printf("\ninst=%s, inst[0]=%d\n", inst, inst[0]);
 	if (!ft_strncmp(inst, "rra", 3))
 		rra(table);
 	else if (!ft_strncmp(inst, "rrb", 3))
