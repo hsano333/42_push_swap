@@ -58,7 +58,8 @@ clean	:
 			make clean -C $(LIBFTDIR)
 
 fclean	:	clean
-			$(RM) $(NAME)
+			$(RM) push_swap
+			$(RM) checker
 			$(RM) $(LIBS)
 
 re	:		fclean all
