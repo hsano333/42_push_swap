@@ -6,14 +6,14 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 16:43:15 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/24 21:02:05 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 14:34:40 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ab_table.h"
 #include "libft_str.h"
 
-void	execute_str_instruction(t_abtable *table, char *inst)
+int	execute_str_instruction(t_abtable *table, char *inst)
 {
 	if (!ft_strncmp(inst, "rra", 3))
 		rra(table);
@@ -37,4 +37,7 @@ void	execute_str_instruction(t_abtable *table, char *inst)
 		rb(table);
 	else if (!ft_strncmp(inst, "rr", 2))
 		rr(table);
+	else
+		return (false);
+	return (true);
 }

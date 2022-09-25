@@ -6,14 +6,14 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 13:56:28 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 03:02:10 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 15:43:51 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "two_or_three_node.h"
 #include "libft_str.h"
 
-static void	get_node_compre(t_deque *node, char *result)
+static void	get_node_compre(t_deque *node, char *numbers)
 {
 	int		i;
 	size_t	cnt;
@@ -36,9 +36,9 @@ static void	get_node_compre(t_deque *node, char *result)
 	while (--i != -1)
 	{
 		if ((tmp[i] - min) < 5)
-			result[i] = (int)(tmp[i] - min) + 'A';
+			numbers[i] = (int)(tmp[i] - min) + 'A';
 		else
-			result[i] = 'Z';
+			numbers[i] = 'Z';
 	}
 }
 
@@ -46,25 +46,27 @@ char	*two_or_three_node_a(t_abtable *table)
 {
 	t_deque	*node;
 	size_t	id;
-	char	result[4];
+	char	numbers[4];
 
 	id = 0;
 	node = search_nil(table->a)->next;
 	if (node->content == NULL)
-		return (NULL);
+		return ("");
 	id = node->content->id;
-	get_node_compre(node, result);
-	if (!ft_strncmp(result, "ACB", 3))
+	get_node_compre(node, numbers);
+	if (is_only_two_or_three_node_in_table(table->a))
+		return (only_two_or_three_node_inst(A_TABLE, numbers));
+	else if (!ft_strncmp(numbers, "ACB", 3))
 		return (INSTRUCTIONS_B);
-	else if (!ft_strncmp(result, "BAC", 3))
+	else if (!ft_strncmp(numbers, "BAC", 3))
 		return (INSTRUCTIONS_A);
-	else if (!ft_strncmp(result, "BCA", 3))
+	else if (!ft_strncmp(numbers, "BCA", 3))
 		return (INSTRUCTIONS_BA);
-	else if (!ft_strncmp(result, "CAB", 3))
+	else if (!ft_strncmp(numbers, "CAB", 3))
 		return (INSTRUCTIONS_AB);
-	else if (!ft_strncmp(result, "CBA", 3))
+	else if (!ft_strncmp(numbers, "CBA", 3))
 		return (INSTRUCTIONS_ABA);
-	else if (!ft_strncmp(result, "BA", 2))
+	else if (!ft_strncmp(numbers, "BA", 2))
 		return (INSTRUCTIONS_A);
 	return ("");
 }
@@ -73,25 +75,27 @@ char	*two_or_three_node_b(t_abtable *table)
 {
 	t_deque	*node;
 	size_t	id;
-	char	result[8];
+	char	numbers[8];
 
 	id = 0;
 	node = search_nil(table->b)->next;
 	if (node->content == NULL)
-		return (NULL);
+		return ("");
 	id = node->content->id;
-	get_node_compre(node, result);
-	if (!ft_strncmp(result, "CAB", 3))
+	get_node_compre(node, numbers);
+	if (is_only_two_or_three_node_in_table(table->b))
+		return (only_two_or_three_node_inst(B_TABLE, numbers));
+	else if (!ft_strncmp(numbers, "CAB", 3))
 		return (INSTRUCTIONS_B);
-	else if (!ft_strncmp(result, "BCA", 3))
+	else if (!ft_strncmp(numbers, "BCA", 3))
 		return (INSTRUCTIONS_A);
-	else if (!ft_strncmp(result, "BAC", 3))
+	else if (!ft_strncmp(numbers, "BAC", 3))
 		return (INSTRUCTIONS_BA);
-	else if (!ft_strncmp(result, "ACB", 3))
+	else if (!ft_strncmp(numbers, "ACB", 3))
 		return (INSTRUCTIONS_AB);
-	else if (!ft_strncmp(result, "ABC", 3))
+	else if (!ft_strncmp(numbers, "ABC", 3))
 		return (INSTRUCTIONS_ABA);
-	else if (!ft_strncmp(result, "AB", 2))
+	else if (!ft_strncmp(numbers, "AB", 2))
 		return (INSTRUCTIONS_A);
 	return ("");
 }
@@ -110,18 +114,12 @@ void	execute_str_inst_wrapper(t_abtable *table, char *inst, char target)
 {
 	if (target == A_TABLE)
 	{
-		if (!ft_strncmp(inst, "s", 1))
-		{
-			execute_str_instruction(table, "sa");
-		}
-		else if (!ft_strncmp(inst, "re", 2))
-		{
+		if (!ft_strncmp(inst, "re", 2))
 			execute_str_instruction(table, "rra");
-		}
+		else if (!ft_strncmp(inst, "s", 1))
+			execute_str_instruction(table, "sa");
 		else if (!ft_strncmp(inst, "r", 1))
-		{
 			execute_str_instruction(table, "ra");
-		}
 	}
 	else if (target == B_TABLE)
 	{

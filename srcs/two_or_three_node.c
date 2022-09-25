@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 02:57:45 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 02:59:45 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 15:47:28 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	is_two_or_three_node(t_abtable *table)
 	return (false);
 }
 
+#include <stdio.h>
 static void	loop_execute_inst(t_abtable *table, char **split_c, \
 		char **split_i, char target)
 {
@@ -85,6 +86,7 @@ static void	loop_execute_inst(t_abtable *table, char **split_c, \
 	}
 }
 
+#include <stdio.h>
 void	execute_inst(t_abtable *table, char *common, char *mono, char target)
 {
 	char	**split_c;

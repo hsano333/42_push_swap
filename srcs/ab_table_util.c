@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:27:04 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 03:54:00 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 16:02:53 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	rotation_for_reverse(t_abtable *table)
 
 void	init_flag(t_abtable *table, char target)
 {
-	table->first_flag = false;
 	if (target == A_TABLE)
 	{
 		table->reverse_count_a = 0;

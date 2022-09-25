@@ -6,11 +6,10 @@
 /*   By: hsano <hsano@student.42tokyo.jp>                    +#+  +:+         */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:58:36 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 02:51:02 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 16:17:27 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdbool.h>
 #include "push_swap_init.h"
 #include "quick_sort.h"

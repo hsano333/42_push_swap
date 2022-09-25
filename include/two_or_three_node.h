@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 02:58:53 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 03:28:07 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/25 15:45:16 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # define INSTRUCTIONS_BA  "r s re s"
 # define INSTRUCTIONS_AB  "s r s re "
 # define INSTRUCTIONS_ABA "s r s re s"
+# define INSTRUCTIONS_C   "r"
+# define INSTRUCTIONS_D   "re"
+# define INSTRUCTIONS_AD   "s re"
+# define INSTRUCTIONS_CAD   "r s re"
+
 # include "ab_table.h"
 # include "deque.h"
 # include "limits.h"
@@ -29,4 +34,6 @@ char	*get_common_instruction(char *inst_a, char *inst_b, \
 											int len_a, int len_b);
 void	execute_str_inst_wrapper(t_abtable *table, char *inst, char target);
 void	execute_str_both_inst_wrapper(t_abtable *table, char *inst);
+int		is_only_two_or_three_node_in_table(t_deque *node);
+char	*only_two_or_three_node_inst(char target, char *numbers);
 #endif

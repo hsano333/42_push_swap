@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_common.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 18:50:54 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 15:48:32 by hsano            ###   ########.fr       */
+/*   Created: 2022/09/25 14:13:52 by hsano             #+#    #+#             */
+/*   Updated: 2022/09/25 14:16:49 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main_common.h"
+#ifndef MAIN_COMMON_H
+# define MAIN_COMMON_H
 
-int	main(int argc, char **argv)
-{
-	int		*list;
-	int		rval;
-	size_t	len;
+#include <stdbool.h>
+#include <stdlib.h>
+#include "libft_str.h"
+#include "push_swap.h"
+#include "ft_printf.h"
 
-	list = NULL;
-	len = convert_argv_to_list(argc, argv, &list);
-	if (len && list)
-	{
-		rval = push_swap(len, list);
-		if (rval == false)
-			ft_printf("Error\n");
-	}
-	else
-		ft_printf("Error\n");
-	free(list);
-	return (true);
-}
+size_t	convert_argv_to_list(int argc, char **argv, int **list);
+#endif

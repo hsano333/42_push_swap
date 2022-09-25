@@ -1,33 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 18:50:54 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/25 15:48:32 by hsano            ###   ########.fr       */
+/*   Created: 2022/09/25 14:21:20 by hsano             #+#    #+#             */
+/*   Updated: 2022/09/25 14:35:44 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main_common.h"
-
-int	main(int argc, char **argv)
-{
-	int		*list;
-	int		rval;
-	size_t	len;
-
-	list = NULL;
-	len = convert_argv_to_list(argc, argv, &list);
-	if (len && list)
-	{
-		rval = push_swap(len, list);
-		if (rval == false)
-			ft_printf("Error\n");
-	}
-	else
-		ft_printf("Error\n");
-	free(list);
-	return (true);
-}
+#ifndef CHECKER_H
+# define CHECKER_H
+# include "stdio.h"
+int	push_swap_checker(size_t len, int *array);
+#endif
